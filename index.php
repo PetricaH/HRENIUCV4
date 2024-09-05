@@ -13,6 +13,25 @@
             <!-- banner -->
             <?php include( ROOT_PATH . '/includes/banner.php') ?>
 
+            <h1 class="hero-section-title">HI, I'M HRENIUC.</h1>
+            <div class="hero-section-copy-container">
+            <img src="static/images/me.png" alt="me" id="me-img">
+                <div class="hero-section-copy-container-groups">
+                    <div class="hero-section-copy-container-text-group">
+                        <p>Master's student in Marketing, Web Developer, Digital Marketer, Digital Artist</p>
+                        <p>Jack of all trades, master of all of them!</p>
+                        <p>Until something new appears and I have to learn it. :D</p>
+                    </div>
+                    <div class="hero-section-copy-container-buttons-group">
+                        <button class="contact-me-btn">Contact Me</button>
+                        <div class="hero-section-copy-container-buttons-group-subgroup">
+                            <button><img src="static/images/github-img.png"></button>
+                            <button><img src="static/images/linkedin-img.png"></button>
+                            <button><img src="static/images/instagram-img.png"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     
