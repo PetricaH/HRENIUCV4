@@ -5,6 +5,16 @@
     <title>Hreniuc Petrică</title>
 </head>
 <body>
+    <!--  container - wraps the whole page -->
+    <div class="container">
+        <div class="hero-section">
+            <!-- navbar -->
+            <?php include( ROOT_PATH . '/includes/navbar.php') ?>
+            <!-- banner -->
+            <?php include( ROOT_PATH . '/includes/banner.php') ?>
+
+        </div>
+    </div>
     
 
 <!-- footer -->
