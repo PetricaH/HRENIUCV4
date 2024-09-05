@@ -2,7 +2,7 @@
     session_start();
 
     //connect to database
-    $conn = mysqli_connect("localhost", "root", "", "HRENIUCV4", 3308);
+    $conn = mysqli_connect("localhost", "root", "", "hreniucv4", 3308);
 
     if (!$conn) {
         die("Error connecting to database: " . mysqli_connect_error());
