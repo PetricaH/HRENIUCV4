@@ -25,6 +25,35 @@ a {
 }
 
 /* Base styles for navbar */
+@media (min-width: 1500px) {
+
+    .navbar {
+        width: 50% !important;
+    }
+    .hero-section-title {
+        position: absolute;
+        top: 30%;
+        font-weight: 400 !important;
+        font-size: 5rem !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+    }
+    
+    .hero-section-title-outline {
+        position: absolute;
+        top: 30%;
+        font-weight: 400 !important;
+        font-size: 5rem !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        color: transparent;
+        -webkit-text-stroke: 1px #f2f2f2;
+        z-index: 1;
+    }
+}
+
 .navbar {
     background-color: rgba(30, 30, 30, .6);
     backdrop-filter: blur(10px);
@@ -160,14 +189,27 @@ ul li a {
     left: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+}
+
+.hero-section-title-outline {
+    position: absolute;
+    top: 30%;
+    font-weight: normal;
+    font-size: 3.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px #f2f2f2;
     z-index: 1;
 }
+
 
 #me-img {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-110%, -28%);
+    transform: translate(-50%, -43%);
 }
 
 .hero-section-copy-container {
@@ -183,7 +225,7 @@ ul li a {
     backdrop-filter: blur(10px);
     color: #f2f2f2;
     padding: 30px 15px ;
-    width: 300px;
+    max-width: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
