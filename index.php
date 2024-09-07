@@ -2,6 +2,8 @@
 <?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
 <?php require_once( ROOT_PATH . '/includes/public_functions.php') ?>
 <?php require_once( ROOT_PATH . '/includes/registration_login.php') ?>
+<?php $posts = getPublishedPosts(); ?>
+<?php $artworks = getPublishedArtworks(); ?>
     <title>Hreniuc Petrică</title>
 </head>
 <body>
@@ -33,6 +35,36 @@
         </div>
         <section id="my-work-section">
             <h2 class="my-work-section-title">mY worK</h2>
+            <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION START -->
+            <div class="different-section">
+                <h2 class="content-title">Recent Web Development Projects</h2>
+                <hr>
+                <div class="different-section-content">
+                    <?php foreach ($webdevprojects as $webdevproject): ?>
+                        <div class="post" style="margin-left: 0px;">
+                            <img src="<?php echo BASE_URL . '/uploads/projects/' . $webdevproject['project_image']; ?>" class="post_image" alt="">
+
+                            <?php if (isset($webdevproject['category']['name'])): ?>
+                            <a href="<?php echo BASE_URL . 'filtered_projects.php?category=' . $webdevproject['category']['id']; ?>" class="btn category">
+                                <?php echo $webdevproject['category']['name']; ?>
+                            </a>
+                            <?php endif ?>
+
+                            <h3><?php echo $webdevproject['title']; ?></h3>
+                            <span><?php echo date("F j, Y", strtotime($webdevproject["created_at"])); ?></span>
+                            <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>">
+                                <div class="post_info">
+                                    <div class="info">
+                                        <span class="read_more">View more...</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION END -->
+
             <!-- RECENT ARTWORKS SECTION START -->
             <div class="different-section">
                         <h2 class="content-title">Recent Artworks</h2>
