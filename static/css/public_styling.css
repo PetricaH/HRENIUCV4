@@ -24,6 +24,10 @@ a {
     text-decoration: none;
 }
 
+.container {
+    height: 100%;
+}
+
 /* Base styles for navbar */
 @media (min-width: 1500px) {
 
@@ -33,8 +37,8 @@ a {
     .hero-section-title {
         position: absolute;
         top: 30%;
-        font-weight: 400 !important;
-        font-size: 5rem !important;
+        font-weight: 200 !important;
+        font-size: 6rem !important;
         left: 50%;
         transform: translate(-50%, -50%);
         white-space: nowrap;
@@ -43,8 +47,8 @@ a {
     .hero-section-title-outline {
         position: absolute;
         top: 30%;
-        font-weight: 400 !important;
-        font-size: 5rem !important;
+        font-weight: 200 !important;
+        font-size: 6rem !important;
         left: 50%;
         transform: translate(-50%, -50%);
         white-space: nowrap;
@@ -52,6 +56,23 @@ a {
         -webkit-text-stroke: 1px #f2f2f2;
         z-index: 1;
     }
+
+    .hero-section-copy-container-groups {
+        padding: 30px 15px ;
+        min-width: 650px !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 85%) !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        width: 390px;
+        border-radius: 20px;
+    }
+    
 }
 
 .navbar {
@@ -169,6 +190,10 @@ ul li a {
     .menu-toggle {
         display: block; /* Show hamburger icon */
     }
+
+    .hero-section-copy-container-groups {
+        transform: translate(-50%, 50%) !important;
+    }
 }
 
 /* hero section */
@@ -179,6 +204,7 @@ ul li a {
     background-repeat: no-repeat;
     height: 100vh;
     padding-top: 10px;
+    position: relative;
 }
 
 .hero-section-title {
@@ -209,7 +235,8 @@ ul li a {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -43%);
+    transform: translate(-50%, -40%);
+    height: 500px;
 }
 
 .hero-section-copy-container {
@@ -221,20 +248,21 @@ ul li a {
 }
 
 .hero-section-copy-container-groups {
-    background-color: rgba(0, 30, 26, .7);
-    backdrop-filter: blur(10px);
+    background-color: #001E1A;
     color: #f2f2f2;
     padding: 30px 15px ;
     max-width: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-40%, 20%);
+    transform: translate(-50%, 85%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 30px;
+    width: 390px;
+    border-radius: 20px;
 }
 
 .hero-section-copy-container-text-group {
@@ -245,9 +273,10 @@ ul li a {
 
 .hero-section-copy-container-buttons-group {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-me-btn {
@@ -258,18 +287,51 @@ ul li a {
     border: none;
 }
 
-.hero-section-copy-container-buttons-group-subgroup button {
-    border: none;
-    background-color: transparent;
+.hero-section-copy-container-buttons-group-subgroup {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 30px;
 }
 
-.hero-section-copy-container-buttons-group-subgroup button:hover {
-    cursor: pointer;
-} 
-
-.hero-section-copy-container-buttons-group-subgroup > button > img {
-    width: 45px;
-    border-radius: 8px;
+.hero-section-copy-container-buttons-group-subgroup a {
+    text-decoration: none;
 }
 
-/* // hero section  */
+.hero-section-copy-container-buttons-group-subgroup a:first-child {
+    color: rgba(0, 119, 181, 0.7);
+}
+
+.hero-section-copy-container-buttons-group-subgroup a:nth-child(2)  {
+    color: rgba(242, 242, 242, .7);
+}
+
+.hero-section-copy-container-buttons-group-subgroup a:nth-child(3): {
+    color: rgba(193, 53, 132, .7);
+}
+
+.hero-section-copy-container-buttons-group-subgroup a:first-child:hover {
+    color: rgba(0, 119, 181, 1);
+}
+
+.hero-section-copy-container-buttons-group-subgroup a:nth-child(2):hover  {
+    color: rgba(242, 242, 242, 1);
+}
+
+.hero-section-copy-container-buttons-group-subgroup a:nth-child(3):hover {
+    color: rgba(193, 53, 132, 1);
+}
+ /* // hero section  */
+
+/* my-work section */
+#my-work-section {
+    position: relative;
+    margin-top: 100px;
+}
+
+.my-work-section-title {
+    color: #001E1A;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 200;
+}

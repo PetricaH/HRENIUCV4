@@ -15,5 +15,6 @@
         <li><a href="#digital_marketing">DIGITAL MARKETING</a></li>
         <li><a href="#digital_art">DIGITAL ART</a></li>
     </ul>
+    <?php include( ROOT_PATH . '/includes/banner.php') ?>
 </div>
 <!-- // navbar -->
