@@ -3,6 +3,5 @@
                 </div>
         </div>
         <!-- // container -->
-        <script src="static/js/public_script.js"></script>
 </body>
 </html>
