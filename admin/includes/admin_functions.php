@@ -24,6 +24,11 @@ $topic_id = 0;
 $isEditingTopic = false;
 $topic_name = "";
 
+// Initialize variables
+$category_id = 0;
+$isEditingCategory = false;
+$category_name = "";
+
 // admin users actions
 
 //if user clicks the create admin button
@@ -97,6 +102,31 @@ if (isset($_POST['update_category'])) {
 if (isset($_GET['delete-art-category'])) {
     $category_id = $_GET['delete-art-category'];
     deleteArtCategory($category_id);
+}
+
+//WEB DEV ACTIONS FROM HERE DOWNWARDS
+
+// Create web development category
+if (isset($_POST['create_webdev_category'])) { 
+    createWebDevCategory($_POST); 
+}
+
+// Edit web development category
+if (isset($_GET['edit-webdev-category'])) {
+    $isEditingWebDevCategory = true;
+    $webdev_category_id = $_GET['edit-webdev-category'];
+    editWebDevCategory($webdev_category_id);
+}
+
+// Update web development category
+if (isset($_POST['update_webdev_category'])) {
+    updateWebDevCategory($_POST);
+}
+
+// Delete web development category
+if (isset($_GET['delete-webdev-category'])) {
+    $webdev_category_id = $_GET['delete-webdev-category'];
+    deleteWebDevCategory($webdev_category_id);
 }
 
 //ADMIN USERS FUNCTIONS FROM HERE DOWNWARDS
@@ -370,4 +400,111 @@ function deleteArtCategory($category_id) {
         header('location: art_categories.php');
     }
 }
+
+// FUNCTIONS FROM HERE DOWNWARDS FOR WEB DEV
+
+//WEB DEVELOPMENT CATEGORIES FUNCTIONS FROM HERE DOWNWARDS
+
+// Function to get all categories for web development projects
+function getAllWebDevCategories() {
+    global $conn;
+    $sql = "SELECT * FROM webdev_project_categories";
+    $result = mysqli_query($conn, $sql);
+    
+    if (!$result) {
+        die("Query Failed: " . mysqli_error($conn));
+    }
+
+    $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $categories;
+}
+
+// Create web development category
+function createWebDevCategory($request_values) {
+    global $conn, $errors, $webdev_category_name, $webdev_category_slug;
+    $webdev_category_name = esc($request_values['webdev_category_name']);
+    $webdev_category_slug = esc($request_values['webdev_category_slug']);
+    
+    // create slug if empty
+    if (empty($webdev_category_slug)) {
+        $webdev_category_slug = makeSlug($webdev_category_name);
+    }
+    
+    // Validate form
+    if (empty($webdev_category_name)) {
+        array_push($errors, "Category name required");
+    }
+    
+    // Ensure no category is saved twice
+    $category_check_query = "SELECT * FROM webdev_project_categories WHERE slug='$webdev_category_slug' LIMIT 1";
+    $result = mysqli_query($conn, $category_check_query);
+    if (mysqli_num_rows($result) > 0) { // if category exists
+        array_push($errors, "Web development category already exists");
+    }
+    
+    // Register web development category if there are no errors
+    if (count($errors) == 0) {
+        $query = "INSERT INTO webdev_project_categories (name, slug)
+                  VALUES('$webdev_category_name', '$webdev_category_slug')";
+        mysqli_query($conn, $query);
+
+        $_SESSION['message'] = "Web development category created successfully";
+        header('location: webdev_categories.php');
+        exit(0);
+    }
+}
+
+// Edit web development category
+function editWebDevCategory($webdev_category_id) {
+    global $conn, $webdev_category_name, $webdev_category_slug, $isEditingWebDevCategory, $webdev_category_id;
+    $sql = "SELECT * FROM webdev_project_categories WHERE id=$webdev_category_id LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $category = mysqli_fetch_assoc($result);
+    
+    // Set form values for editing
+    $webdev_category_name = $category['name'];
+    $webdev_category_slug = $category['slug'];
+}
+
+// Update web development category
+function updateWebDevCategory($request_values) {
+    global $conn, $errors, $webdev_category_name, $webdev_category_slug, $webdev_category_id;
+    $webdev_category_name = esc($request_values['webdev_category_name']);
+    $webdev_category_slug = esc($request_values['webdev_category_slug']);
+    $webdev_category_id = esc($request_values['webdev_category_id']);
+    
+    // Create slug if empty
+    if (empty($webdev_category_slug)) {
+        $webdev_category_slug = makeSlug($webdev_category_name);
+    }
+    
+    // Validate form
+    if (empty($webdev_category_name)) {
+        array_push($errors, "Category name is required");
+    }
+    
+    // Update category if there are no errors
+    if (count($errors) === 0) {
+        $query = "UPDATE webdev_project_categories SET name='$webdev_category_name', slug='$webdev_category_slug' WHERE id=$webdev_category_id";
+        mysqli_query($conn, $query);
+
+        $_SESSION['message'] = "Web development category updated successfully";
+        header('location: webdev_categories.php');
+        exit(0);
+    }
+}
+
+// Delete web development category
+function deleteWebDevCategory($webdev_category_id) {
+    global $conn;
+    $sql = "DELETE FROM webdev_project_categories WHERE id=$webdev_category_id";
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['message'] = "Web development category successfully deleted";
+        header('location: webdev_categories.php');
+    }
+}
+
+
+// END OF FUNCTIONS FOR WEB DEV
+
 ?>

@@ -82,7 +82,7 @@
                                                 </a>
                                                 <?php endif ?>
 
-                                                <h3><?php echo $art['name']; ?></h3>
+                                                <h3><?php echo $art['title']; ?></h3>
                                                 <span><?php echo date("F j, Y", strtotime($art["created_at"])); ?></span>
                                                 <a href="single_art.php?art-id=<?php echo $art['id']; ?>">
                                                 <div class="post_info">

@@ -84,7 +84,7 @@ if (isset($_POST['save_art'])) {
         }
     } else {
         // Insert new art record
-        $sql = "INSERT INTO art (name, description, art_category_id, published, art_image) VALUES ('$name', '$description', '$category_id', '$published', '$art_image')";
+        $sql = "INSERT INTO art (title, description, art_category_id, published, art_image) VALUES ('$name', '$description', '$category_id', '$published', '$art_image')";
         if (!mysqli_query($conn, $sql)) {
             die("Query failed: " . mysqli_error($conn));
         } else {

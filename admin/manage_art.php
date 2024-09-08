@@ -43,7 +43,7 @@ if (isset($_GET['delete-art'])) {
                         <?php foreach ($arts as $key => $art): ?>
                             <tr>
                                 <td><?php echo $key + 1; ?></td>
-                                <td><?php echo $art['name']; ?></td>
+                                <td><?php echo $art['title']; ?></td>
                                 <td><?php echo $art['category']; ?></td>
                                 <td><?php echo $art['published'] ? "Yes" : "No"; ?></td>
                                 <td><img src="<?php echo BASE_URL . '/uploads/art/' . $art['art_image']; ?>" alt="" style="height: 60px;"></td>
