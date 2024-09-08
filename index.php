@@ -4,6 +4,7 @@
 <?php require_once( ROOT_PATH . '/includes/registration_login.php') ?>
 <?php $posts = getPublishedPosts(); ?>
 <?php $artworks = getPublishedArtworks(); ?>
+<?php $webdevprojects = getPublishedWebdevProjects(); ?>
     <title>Hreniuc Petrică</title>
 </head>
 <body>
@@ -35,6 +36,7 @@
         </div>
         <section id="my-work-section">
             <h2 class="my-work-section-title">mY worK</h2>
+
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION START -->
             <div class="different-section">
                 <h2 class="content-title">Recent Web Development Projects</h2>

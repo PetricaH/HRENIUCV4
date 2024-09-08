@@ -153,3 +153,56 @@ function getAllArtCategories() {
     $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $categories;
 }
+
+// function to get all published webdev projects
+function getPublishedWebdevProjects() {
+    global $conn;
+    $sql = "SELECT a.*, ac.name AS category_name, ac.id AS category_id
+        FROM webdev a
+        JOIN webdev_project_categories ac ON a.project_category_id = ac.id
+        WHERE a.published=true";
+    $result = mysqli_query($conn, $sql);
+    $webdevprojects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    foreach ($webdevprojects as &$webdevproject) {
+        // attach category information
+        $webdevproject['category'] = [
+            'id' => $webdevproject['category_id'],
+            'name' => $webdevproject['category_name']
+        ];
+    }
+
+    return $webdevprojects;
+}
+
+//function to get a single web dev project by its slug
+function getWebdevProject($slug) {
+    global $conn;
+    $slug = mysqli_real_escape_string($conn, $slug);
+    $sql = "SELECT * FROM webdev WHERE slug='$slug' AND published=true";
+    $result = mysqli_query($conn, $sql);
+    $webdevproject = mysqli_fetch_assoc($result);
+    if ($webdevproject) {
+        $webdevproject['category'] = getWebdevProjectCategory($webdevproject['project_category_id']);
+    }
+    return $webdevproject;
+}
+
+// function to get webdev project category details by category id
+function getWebdevProjectCategory($category_id) {
+    global $conn;
+    $category_id = intval($category_id); //ensure category_id is an integer
+    $sql = "SELECT * FROM webdev_project_categories WHERE id=$category_id";
+    $result = mysqli_query($conn, $sql);
+    $category = mysqli_fetch_assoc($result);
+    return $category;
+}
+
+//function to get all webdev project categories
+function getAllWebdevProjectCategories() {
+    global $conn;
+    $sql = "SELECT * FROM webdev_project_categories";
+    $result = mysqli_query($conn, $sql);
+    $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $categories;
+}
