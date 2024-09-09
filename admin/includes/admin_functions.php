@@ -405,18 +405,18 @@ function deleteArtCategory($category_id) {
 
 //WEB DEVELOPMENT CATEGORIES FUNCTIONS FROM HERE DOWNWARDS
 
-// Function to get all categories for web development projects
-function getAllWebDevCategories() {
+// function to get all categories for webdev projects
+function getAllWebdevCategories() {
     global $conn;
     $sql = "SELECT * FROM webdev_project_categories";
     $result = mysqli_query($conn, $sql);
-    
+
     if (!$result) {
-        die("Query Failed: " . mysqli_error($conn));
+        die("Query failed: " . mysqli_error($conn));
     }
 
-    $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    return $categories;
+    $webdevPostsCategories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $webdevPostsCategories;
 }
 
 // Create web development category

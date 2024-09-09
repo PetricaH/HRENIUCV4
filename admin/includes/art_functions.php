@@ -12,7 +12,7 @@ $art_image = "";
 // Function to get all artworks from the art table
 function getAllArtworks() {
     global $conn;
-    $sql = "SELECT a.*, c.name as category FROM art a LEFT JOIN art_categories c ON a.art_category_id = c.id ORDER BY a.created_at DESC";
+    $sql = "SELECT a.*, c.name AS category FROM art a LEFT JOIN art_categories c ON a.art_category_id = c.id ORDER BY a.created_at DESC";
     $result = mysqli_query($conn, $sql);
 
     if (!$result) {
