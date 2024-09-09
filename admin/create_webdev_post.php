@@ -17,7 +17,7 @@
         <!-- middle form - to create and edit webdev posts -->
         <div class="action create-webdevPost-div">
             <h1 class="page-title">Create/Edit Webdev Post</h1>
-            <form method="post" enctype="multipart/form-data" action="<?php echo BASE_URL . 'admin/create_webdev_pots.php'; ?>">
+            <form method="post" enctype="multipart/form-data" action="<?php echo BASE_URL . 'admin/create_webdev_post.php'; ?>">
                 <!-- validation errors for the form -->
                 <?php include(ROOT_PATH . '/includes/errors.php'); ?>
                 <!-- if editing webdev post, the id is required to identify that webdev post -->
@@ -31,12 +31,31 @@
                 <textarea name="description" id="description" cols="30" rows="10" placeholder="Description of Webdev Project"><?php echo $description; ?></textarea>
                 <select name="webdev_project_category_id">
                     <option value="" selected disabled>Choose Category</option>
-                    <?php foreach ($webdev_project_categories as $webdev_project_category): ?>
-                        <option value="<?php echo $webdev_project_category['id']; ?>">
-
+                    <?php foreach ($webdevCategories as $webdevCategory): ?>
+                        <option value="<?php echo $webdevCategory['id']; ?>">
+                            <?php echo $webdevCategory['name']; ?>
                         </option>
                     <?php endforeach ?>
                 </select>
+
+                <!-- Only admin users can view publish input field -->
+                <?php if ($_SESSION['user']['role'] == "Admin"): ?>
+                    <!-- Display checkbox according to whether the artwork has been published or not -->
+                    <?php if ($published == true): ?>
+                        <label for="publish">
+                            Publish
+                            <input type="checkbox" value="1" name="publish" checked="checked">&nbsp;
+                        </label>
+                    <?php else: ?>
+                        <label for="publish">
+                            Publish
+                            <input type="checkbox" value="1" name="publish">&nbsp;
+                        </label>
+                    <?php endif ?>
+                <?php endif ?>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn" name="save_webdev_post">Save</button>
             </form>
         </div>
     </div>

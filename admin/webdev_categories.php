@@ -31,7 +31,6 @@ $webdev_category_slug = '';
                     <input type="hidden" name="webdev_category_id" value="<?php echo $webdev_category_id; ?>">
                 <?php endif ?>
                 <input type="text" name="webdev_category_name" value="<?php echo $webdev_category_name; ?>" placeholder="Category">
-                <input type="text" name="webdev_category_slug" value="<?php echo $webdev_category_slug; ?>" placeholder="Slug">
                 <!-- if editing category, display the update button instead of create button -->
                 <?php if ($isEditingWebDevCategory === true): ?>
                     <button type="submit" class="btn" name="update_webdev_category">UPDATE</button>
@@ -52,7 +51,6 @@ $webdev_category_slug = '';
                     <thead>
                         <th>N</th>
                         <th>Category Name</th>
-                        <th>Slug</th>
                         <th colspan="2">Action</th>
                     </thead>
                     <tbody>
@@ -60,7 +58,6 @@ $webdev_category_slug = '';
                             <tr>
                                 <td><?php echo $key + 1; ?></td>
                                 <td><?php echo $webdevCategory['name']; ?></td>
-                                <td><?php echo $webdevCategory['slug']; ?></td>
                                 <td>
                                     <a class="fa fa-pencil btn edit"
                                         href="webdev_categories.php?edit-webdev-category=<?php echo $webdevCategory['id'] ?>">

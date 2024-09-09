@@ -245,6 +245,7 @@ function getAllTopics() {
     $topics = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $topics;
 }
+
 function createTopic($request_values){
     global $conn, $errors, $topic_name;
     $topic_name = esc($request_values['topic_name']);
@@ -267,7 +268,7 @@ function createTopic($request_values){
         mysqli_query($conn, $query);
 
         $_SESSION['message'] = "topic created successfully";
-        header('location: topic.php');
+        header('location: topics.php');
         exit(0);
     }
 }
@@ -423,7 +424,6 @@ function getAllWebdevCategories() {
 function createWebDevCategory($request_values) {
     global $conn, $errors, $webdev_category_name, $webdev_category_slug;
     $webdev_category_name = esc($request_values['webdev_category_name']);
-    $webdev_category_slug = esc($request_values['webdev_category_slug']);
     
     // create slug if empty
     if (empty($webdev_category_slug)) {

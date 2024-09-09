@@ -11,7 +11,7 @@
 // Check if the delete request has been made
 if (isset($_GET['delete-project'])) {
     $project_id = $_GET['delete-project'];
-    deleteWebdevProject($project_id); // Call the delete function
+    deleteWebdevPost($project_id); // Call the delete function
 }
 ?>
 

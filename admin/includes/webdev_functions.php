@@ -31,7 +31,7 @@ if (isset($_POST['save_webdev_post'])) {
     $webdev_id = isset($_POST['webdev_id']) ? $_POST['webdev_id'] : 0;
     $name = esc($_POST['name']);
     $description = esc($_POST['description']);
-    $cateogry_id = isset($_POST['category_id']) ? esc($_POST['category_id']) : null;
+    $project_category_id = isset($_POST['project_category_id']) ? esc($_POST['project_category_id']) : null;
     $published = isset($_POST['publish']) ? 1 : 0;
 
     // handle image upload
@@ -62,7 +62,7 @@ if (isset($_POST['save_webdev_post'])) {
 
     if ($isEditingWebDev) {
         // update the webdev record
-        $sql = "UPDATE webdev SET name='$name', description='$description', category_id='$cateogry_id', published='$published', project_image='$project_image' WHERE id='$webdev_id'";
+        $sql = "UPDATE webdev SET name='$name', description='$description', project_category_id='$project_category_id', published='$published', project_image='$project_image' WHERE id='$webdev_id'";
         if (!mysqli_query($conn, $sql)) {
             die("Query failed: " . mysqli_error($conn));
         } else {
@@ -72,7 +72,7 @@ if (isset($_POST['save_webdev_post'])) {
         }
     } else {
         // insert new webdev record
-        $sql = "INSERT INTO webdev (title, description, project_category_id, published, project_image) VALUES ('$name', '$description', '$cateogry_id', '$published', '$project_image')";
+        $sql = "INSERT INTO webdev (title, description, project_category_id, published, project_image) VALUES ('$title', '$description', '$project_category_id', '$published', '$project_image')";
         if (!mysqli_query($conn, $sql)) {
             die("Query failed: " . mysqli_error($conn));
         } else {
@@ -93,5 +93,34 @@ if (!function_exists('esc')) {
 }
 
 // function to delete webdev post
+function deleteWebdevPost($webdev_id) {
+    global $conn;
+    
+    // first get the webdev post to telete the image file
+    $sql = "SELECT project_image FROM webdev WHERE id=$webdev_id";
+    $result = mysqli_query($conn, $sql);
+    $webdevPost = mysqli_fetch_assoc($result);
+
+    if ($webdevPost) {
+        $project_image = $webdevPost['project_image'];
+        $image_path = ROOT_PATH . "/uploads/projects/" . $project_image;
+
+        // delete the webdev post image file if it exists
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+
+        // now delete the webdev post record from the database
+        $sql = "DELETE FROM webdev WHERE id=$webdev_id LIMIT 1";
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION['message'] = "Webdev post successfully deleted";
+            header("Location: manage_webdev_post.php");
+            exit(0);
+        }  else {
+            $_SESSION['message'] = "Failed to delete webdev post";
+        }
+    }
+}
+
 ?>
 

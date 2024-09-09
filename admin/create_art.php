@@ -34,10 +34,10 @@
                 <select name="category_id">
                     <option value="" selected disabled>Choose Category</option>
                     <?php foreach ($categories as $category): ?>
-                        <option value="<?php echo $category['id']; ?>">
-                            <?php echo $category['name']; ?>
+                        <option value="<?php echo htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <?php echo htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8'); ?>
                         </option>
-                    <?php endforeach ?>
+                    <?php endforeach; ?>
                 </select>
 
                 <!-- Only admin users can view publish input field -->
