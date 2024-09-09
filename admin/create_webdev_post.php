@@ -1,10 +1,40 @@
-<?php include('../config.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/webdev_functions.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
+<?php 
+include('../config.php'); 
+include(ROOT_PATH . '/admin/includes/admin_functions.php'); 
+include(ROOT_PATH . '/admin/includes/webdev_functions.php'); 
+include(ROOT_PATH . '/admin/includes/head_section.php'); 
 
-<!-- Get all web development categories -->
-<?php $webdevCategories = getAllWebDevCategories(); ?>
+// Initialize the variable
+$isEditingWebDevPost = false;
+
+// Check if the user is editing an existing project
+if (isset($_GET['edit'])) {
+    $webdev_post_id = $_GET['edit'];
+    $isEditingWebDevPost = true;
+
+    // Fetch the existing project data for editing
+    $sql = "SELECT * FROM webdev WHERE id=$webdev_post_id LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $webdev_post = mysqli_fetch_assoc($result);
+
+    // Set the form fields with existing data
+    $title = $webdev_post['title'];
+    $description = $webdev_post['description'];
+    $category_id = $webdev_post['project_category_id'];
+    $published = $webdev_post['published'];
+    $project_image = $webdev_post['project_image'];
+} else {
+    // If creating a new project, initialize default values
+    $title = '';
+    $description = '';
+    $category_id = '';
+    $published = false;
+    $project_image = '';
+}
+
+// Get all web development categories
+$webdevCategories = getAllWebDevCategories(); 
+?>
 
 <title>Admin | Create Web Development Project</title>
 </head>
@@ -34,7 +64,7 @@
                 <select name="category_id">
                     <option value="" selected disabled>Choose Category</option>
                     <?php foreach ($webdevCategories as $webdevCategory): ?>
-                        <option value="<?php echo $webdevCategory['id']; ?>">
+                        <option value="<?php echo $webdevCategory['id']; ?>" <?php if($category_id == $webdevCategory['id']) echo 'selected'; ?>>
                             <?php echo $webdevCategory['name']; ?>
                         </option>
                     <?php endforeach ?>
