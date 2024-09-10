@@ -113,7 +113,7 @@ function deleteWebdevPost($webdev_id) {
         // now delete the webdev post record from the database
         $sql = "DELETE FROM webdev WHERE id=$webdev_id LIMIT 1";
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['message'] = "Webdev post successfully deleted";
+            $_SESSION['message'] = "Webdev podst successfully deleted";
             header("Location: manage_webdev_post.php");
             exit(0);
         }  else {
