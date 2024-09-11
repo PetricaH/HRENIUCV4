@@ -12,7 +12,7 @@ $project_category_id = "";
 $published = false;
 $project_image = "";
 
-// function to get all webdev projedts from the webdev table
+// function to get all webdev projedts from the dev table
 function getAllWebdevProjects() {
     global $conn;
     $sql = "SELECT w.*, c.name AS category FROM webdev w LEFT JOIN webdev_project_categories c ON w.project_category_id = c.id ORDER BY w.created_at DESC";
@@ -29,7 +29,7 @@ function getAllWebdevProjects() {
 // function to handle webdev post creation or editing
 if (isset($_POST['save_webdev_post'])) {
     $webdev_id = isset($_POST['webdev_id']) ? $_POST['webdev_id'] : 0;
-    $title = esc($_POST['title']);
+    $title = esc($_POST['name']);
     $description = esc($_POST['description']);
     $project_category_id = isset($_POST['project_category_id']) ? esc($_POST['project_category_id']) : null;
     $published = isset($_POST['publish']) ? 1 : 0;

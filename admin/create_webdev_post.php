@@ -3,8 +3,9 @@
 <?php include(ROOT_PATH . '/admin/includes/webdev_functions.php'); ?>
 <?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
 
-<!-- get all the web dev categories (similar to arts and topics) -->
-<?php $webdevProjectCategories = getAllWebdevCategories(); ?>
+<!-- get all the web dev categories for the dropdown (similar to arts and topics) -->
+<?php $webdevPostsCategories = getAllWebdevCategories(); ?>
+
 <title>Admin | Create WebDev Post</title>
 </head>
 <body>
@@ -31,9 +32,9 @@
                 <textarea name="description" id="description" cols="30" rows="10" placeholder="Description of Webdev Project"><?php echo $description; ?></textarea>
                 <select name="webdev_project_category_id">
                     <option value="" selected disabled>Choose Category</option>
-                    <?php foreach ($webdevCategories as $webdevCategory): ?>
-                        <option value="<?php echo $webdevCategory['id']; ?>">
-                            <?php echo $webdevCategory['name']; ?>
+                    <?php foreach ($webdevPostsCategories as $webdevPostsCategory): ?>
+                        <option value="<?php echo $webdevPostsCategory['id']; ?>">
+                            <?php echo $webdevPostsCategory['name']; ?>
                         </option>
                     <?php endforeach ?>
                 </select>

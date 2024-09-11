@@ -411,11 +411,6 @@ function getAllWebdevCategories() {
     global $conn;
     $sql = "SELECT * FROM webdev_project_categories";
     $result = mysqli_query($conn, $sql);
-
-    if (!$result) {
-        die("Query failed: " . mysqli_error($conn));
-    }
-
     $webdevPostsCategories = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $webdevPostsCategories;
 }
