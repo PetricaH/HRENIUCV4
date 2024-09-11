@@ -29,14 +29,14 @@ function getAllWebdevProjects() {
 // function to handle webdev post creation or editing
 if (isset($_POST['save_webdev_post'])) {
     $webdev_id = isset($_POST['webdev_id']) ? $_POST['webdev_id'] : 0;
-    $name = esc($_POST['name']);
+    $title = esc($_POST['title']);
     $description = esc($_POST['description']);
     $project_category_id = isset($_POST['project_category_id']) ? esc($_POST['project_category_id']) : null;
     $published = isset($_POST['publish']) ? 1 : 0;
 
     // handle image upload
-    if (isset($_FILES['project_image']['name']) && $_FILES['project_image']['name'] != "") {
-        $project_image = time() . '_' . $_FILES['project_image']['name'];
+    if (isset($_FILES['project_image']['title']) && $_FILES['project_image']['title'] != "") {
+        $project_image = time() . '_' . $_FILES['project_image']['title'];
         $upload_dir = ROOT_PATH . "/uploads/projects";
 
         // check if the directory exists, if not, create it 
@@ -62,7 +62,7 @@ if (isset($_POST['save_webdev_post'])) {
 
     if ($isEditingWebDev) {
         // update the webdev record
-        $sql = "UPDATE webdev SET name='$name', description='$description', project_category_id='$project_category_id', published='$published', project_image='$project_image' WHERE id='$webdev_id'";
+        $sql = "UPDATE webdev SET name='$title', description='$description', project_category_id='$project_category_id', published='$published', project_image='$project_image' WHERE id='$webdev_id'";
         if (!mysqli_query($conn, $sql)) {
             die("Query failed: " . mysqli_error($conn));
         } else {
@@ -72,7 +72,8 @@ if (isset($_POST['save_webdev_post'])) {
         }
     } else {
         // insert new webdev record
-        $sql = "INSERT INTO webdev (title, description, project_category_id, published, project_image) VALUES ('$title', '$description', '$project_category_id', '$published', '$project_image')";
+        $sql = "INSERT INTO webdev (title, description, project_category_id, published, project_image) 
+                VALUES ('$title', '$description', '$project_category_id', '$published', '$project_image')";
         if (!mysqli_query($conn, $sql)) {
             die("Query failed: " . mysqli_error($conn));
         } else {
