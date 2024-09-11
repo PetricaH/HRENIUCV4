@@ -65,7 +65,7 @@ $topics = getAllTopics();
                 <button type="submit" name="publish_post" class="btn">Publish</button>
             </form>
         </div>
-        <!-- End of middle form to create and edit -->
+        <!-- End of middle form to create and edi -->
     </div>
 </body>
 </html>
