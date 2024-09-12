@@ -61,13 +61,13 @@ if (isset($_POST['save_webdev_post'])) {
     }
 
     if ($isEditingWebDev) {
-        // update the webdev record
+        // update the webdev recorddd
         $sql = "UPDATE webdev SET name='$title', description='$description', project_category_id='$project_category_id', published='$published', project_image='$project_image' WHERE id='$webdev_id'";
         if (!mysqli_query($conn, $sql)) {
             die("Query failed: " . mysqli_error($conn));
         } else {
             $_SESSION['message'] = "Webdev post updated successfully";
-            header('Location: manage_webdev_post.php'); // redirect after update (same as for the update)
+            header('Location: manage_webdev_post.php'); // redirect afterrrr update (same as for the update)
             exit(0);
         }
     } else {
