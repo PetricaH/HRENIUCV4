@@ -27,7 +27,7 @@
                 <?php endif ?>
 
                 <input type="text" name="name" value="<?php echo $title; ?>" placeholder="Name of the Webdev Post">
-                <label style="float: left; margin: 5px auto 5px;">Upload Webdev Image</label>
+                <label style="float: left; margin: 5px auto 5px;">Featured Image</label>
                 <input type="file" name="webdev_project_image">
                 <textarea name="description" id="description" cols="30" rows="10" placeholder="Description of Webdev Project"><?php echo $description; ?></textarea>
                 <select name="webdev_project_category_id">
@@ -56,7 +56,8 @@
                 <?php endif ?>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn" name="save_webdev_post">Save</button>
+                <button type="submit" class="btn" name="save_webdev_post">Save as Draft</button>
+                <button type="submit" class="btn" name="publish_webdev_post">Publish</button>
             </form>
         </div>
     </div>
