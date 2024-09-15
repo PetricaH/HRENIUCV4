@@ -11,26 +11,21 @@ $image = "";
 
 // Function to get all posts from the posts table
 function getAllPosts() {
-    global $conn;
+        global $conn;
         
-        // Admin can view all posts
-        // Author can only view their posts
         if ($_SESSION['user']['role'] == "Admin") {
-                $sql = "SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.id";
-            } elseif ($_SESSION['user']['role'] == "Author") {
-                $user_id = $_SESSION['user']['id'];
-                $sql = "SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.id WHERE posts.user_id=$user_id";
-            }
+            $sql = "SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.id";
+        } elseif ($_SESSION['user']['role'] == "Author") {
+            $user_id = $_SESSION['user']['id'];
+            $sql = "SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.id WHERE posts.user_id=$user_id";
+        }
+    
         $result = mysqli_query($conn, $sql);
         $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-        $final_posts = array();
-        foreach ($posts as $post) {
-                $post['author'] = getAdminUsers($post['user_id']);
-                array_push($final_posts, $post);
-        }
-        return $final_posts;
-}
+    
+        return $posts;
+    }
+    
 
 // Function to handle post creation or editing 
 if (isset($_POST['save_post'])) {
@@ -160,6 +155,102 @@ if (isset($_GET['delete-post'])) {
                 exit(0);
         }
     }
+
+    // function to edit digital marketing project
+
+    function editPost($role_id)
+    {
+        global $conn, $title, $post_slug, $body, $published, $isEditingPost, $post_id;
+    
+        // Prepare the SQL query
+        $sql = "SELECT * FROM posts WHERE id=$role_id LIMIT 1";
+        $result = mysqli_query($conn, $sql);
+    
+        // Check if the query was successful
+        if (!$result) {
+            die("Query failed: " . mysqli_error($conn));
+        }
+    
+        // Fetch the post data
+        $post = mysqli_fetch_assoc($result);
+    
+        // Check if a post was found
+        if ($post) {
+            // Set form values on the form to be updated
+            $title = $post['title'];
+            $body = $post['body'];
+            $published = $post['published'];
+        } else {
+            // Handle the case where no post was found
+            die("No post found with ID: $role_id");
+        }
+    }
+    
+
+    // function to update Digital Marketing Project
+
+    function updatePost($request_values)
+    {
+            global $conn, $errors, $post_id, $title, $image, $topic_id, $body, $published;
+
+            $title = esc($request_values['title']);
+            $body = esc($request_values['body']);
+            $post_id = esc($request_values['post_id']);
+            if (isset($request_values['topic_id'])) {
+                    $topic_id = esc($request_values['topic_id']);
+            }
+            // create slug: if title is "The Storm Is Over", return "the-storm-is-over" as slug
+            $post_slug = makeSlug($title);
+
+            if (empty($title)) { array_push($errors, "Post title is required"); }
+            if (empty($body)) { array_push($errors, "Post body is required"); }
+            // if new featured image has been provided
+            if (isset($_POST['image'])) {
+                    // Get image name
+                    $image = $_FILES['image']['name'];
+                    // image file directory
+                    $target = "../static/images/" . basename($image);
+                    if (!move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+                            array_push($errors, "Failed to upload image. Please check file settings for your server");
+                    }
+            }
+
+            // register topic if there are no errors in the form
+            if (count($errors) == 0) {
+                    $query = "UPDATE posts SET title='$title', slug='$post_slug', views=0, image='$image', body='$body', published=$published, updated_at=now() WHERE id=$post_id";
+                    // attach topic to post on post_topic table
+                    if(mysqli_query($conn, $query)){ // if post created successfully
+                            if (isset($topic_id)) {
+                                    $inserted_post_id = mysqli_insert_id($conn);
+                                    // create relationship between post and topic
+                                    $sql = "INSERT INTO post_topic (post_id, topic_id) VALUES($inserted_post_id, $topic_id)";
+                                    mysqli_query($conn, $sql);
+                                    $_SESSION['message'] = "Post created successfully";
+                                    header('location: posts.php');
+                                    exit(0);
+                            }
+                    }
+                    $_SESSION['message'] = "Post updated successfully";
+                    header('location: posts.php');
+                    exit(0);
+            }
+    }
+
+// if user clicks the Edit post button
+if (isset($_GET['edit-post'])) {
+        $post_id = intval($_GET['edit-post']); // Convert to integer
+        if ($post_id > 0) {
+            $isEditingPost = true;
+            editPost($post_id);
+        } else {
+            die("Invalid post ID");
+        }
+    }
+    
+// if user clicks the update post button
+if (isset($_POST['update_post'])) {
+        updatePost($_POST);
+}
 
 ?>
 

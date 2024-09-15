@@ -68,7 +68,7 @@
 
                                                         <td>
                                                                 <a class="fa fa-pencil btn edit"
-                                                                        href="posts.php?edit-post=<?php echo $post['id'] ?>">
+                                                                        href="posts.php?edit-post=<?php echo $post['id']; ?>">
                                                                 </a>
                                                         </td>
                                                         <td>
