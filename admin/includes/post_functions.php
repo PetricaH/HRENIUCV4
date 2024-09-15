@@ -128,6 +128,14 @@ function deletePost($post_id) {
         }
     }
 }
+
+// action to delete the post (needed so te deletePost function can be executed)
+
+if (isset($_GET['delete-post'])) {
+        $post_id = $_GET['delete-post'];
+        deletePost($post_id);
+}
+
 ?>
 
 
