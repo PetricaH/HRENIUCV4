@@ -5,7 +5,7 @@
 
 <!-- Get all admin posts from DB -->
 <?php $posts = getAllPosts(); ?>
-        <title>Admin | Manage Posts</title>
+        <title>Admin | Manage Digital Marketing Projects</title>
 </head>
 <body>
         <!-- admin navbar -->
@@ -41,7 +41,7 @@
                                         <?php foreach ($posts as $key => $post): ?>
                                                 <tr>
                                                         <td><?php echo $key + 1; ?></td>
-                                                        <td><?php echo $post['user_id']; ?></td>
+                                                        <td><?php echo $post['username']; ?></td>
                                                         <td>
                                                                 <a   target="_blank"
                                                                 href="<?php echo BASE_URL . 'single_post.php?post-slug=' . $post['slug'] ?>">

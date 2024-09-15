@@ -16,11 +16,11 @@ function getAllPosts() {
         // Admin can view all posts
         // Author can only view their posts
         if ($_SESSION['user']['role'] == "Admin") {
-                $sql = "SELECT * FROM posts";
-        } elseif ($_SESSION['user']['role'] == "Author") {
+                $sql = "SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.id";
+            } elseif ($_SESSION['user']['role'] == "Author") {
                 $user_id = $_SESSION['user']['id'];
-                $sql = "SELECT * FROM posts WHERE user_id=$user_id";
-        }
+                $sql = "SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.id WHERE posts.user_id=$user_id";
+            }
         $result = mysqli_query($conn, $sql);
         $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

@@ -58,7 +58,9 @@ if (isset($_GET['delete-admin'])) {
 //TOPIC ACTIONS FROM HERE DOWNWARDS
 
 //if user clicks the create topic button
-if (isset($_POST['create_topic'])) { createTopic($_POST); }
+if (isset($_POST['create_topic'])) { 
+    createTopic($_POST); 
+}
 
 //if user clicks the edit topic button
 
