@@ -38,7 +38,12 @@ if (isset($_GET['delete-art'])) {
                         <th>Category</th>
                         <th>Published</th>
                         <th>Image</th>
-                        <th colspan="3">Action</th>
+                        <!-- Only Admin can publish/unpublish post -->
+                        <?php if ($_SESSION['user']['role'] == "Admin"): ?>
+                            <th><small>Publish</small></th>
+                        <?php endif ?>
+                        <th><small>Edit</small></th>
+                        <th><small>Delete</small></th>
                     </thead>
                     <tbody>
                         <?php foreach ($arts as $key => $art): ?>
@@ -49,6 +54,20 @@ if (isset($_GET['delete-art'])) {
                                 <td><?php echo $art['art_category_id']; ?></td>
                                 <td><?php echo $art['published'] ? "Yes" : "No"; ?></td>
                                 <td><img src="<?php echo BASE_URL . '/uploads/art/' . $art['art_image']; ?>" alt="" style="height: 60px;"></td>
+                                <!-- Only Admin can publish/unpublish post -->
+                                <?php if ($_SESSION['user']['role'] == "Admin" ): ?>
+                                                                <td>
+                                                                <?php if ($art['published'] == true): ?>
+                                                                        <a class="fa fa-check btn unpublish"
+                                                                                href="manage_art.php?unpublish=<?php echo $art['id'] ?>">
+                                                                        </a>
+                                                                <?php else: ?>
+                                                                        <a class="fa fa-times btn publish"
+                                                                                href="manage_art.php?publish=<?php echo $art['id'] ?>">
+                                                                        </a>
+                                                                <?php endif ?>
+                                                                </td>
+                                                        <?php endif ?>
                                 <td>
                                     <a class="fa fa-pencil btn edit"
                                        href="create_art.php?edit-art=<?php echo $art['id'] ?>">

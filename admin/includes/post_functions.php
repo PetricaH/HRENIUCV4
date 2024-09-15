@@ -128,7 +128,6 @@ function deletePost($post_id) {
         }
     }
 }
-
 ?>
 
 
