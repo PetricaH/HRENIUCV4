@@ -32,7 +32,7 @@ $topics = getAllTopics();
                 <?php endif ?>
 
                 <input type="text" name="title" value="<?php echo $title; ?>" placeholder="Title">
-                <label style="float: left; margin: 5px auto 5px;">Featured Image</label>
+                <label style="float: left; margin: 5px auto 5px;">Image</label>
                 <input type="file" name="featured_image">
                 <textarea name="body" id="body" cols="30" rows="10"><?php echo $body; ?></textarea>
                 <select name="topic_id">

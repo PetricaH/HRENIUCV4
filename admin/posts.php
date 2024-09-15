@@ -26,8 +26,8 @@
                                 <table class="table">
                                                 <thead>
                                                 <th>N</th>
-                                                <th>Title</th>
                                                 <th>Author</th>
+                                                <th>Title</th>
                                                 <th>Views</th>
                                                 <!-- Only Admin can publish/unpublish post -->
                                                 <?php if ($_SESSION['user']['role'] == "Admin"): ?>
@@ -40,7 +40,7 @@
                                         <?php foreach ($posts as $key => $post): ?>
                                                 <tr>
                                                         <td><?php echo $key + 1; ?></td>
-                                                        <td><?php echo $post['author']; ?></td>
+                                                        <td><?php echo $post['user_id']; ?></td>
                                                         <td>
                                                                 <a   target="_blank"
                                                                 href="<?php echo BASE_URL . 'single_post.php?post-slug=' . $post['slug'] ?>">
@@ -66,12 +66,12 @@
 
                                                         <td>
                                                                 <a class="fa fa-pencil btn edit"
-                                                                        href="create_post.php?edit-post=<?php echo $post['id'] ?>">
+                                                                        href="posts.php?edit-post=<?php echo $post['id'] ?>">
                                                                 </a>
                                                         </td>
                                                         <td>
                                                                 <a  class="fa fa-trash btn delete" 
-                                                                        href="create_post.php?delete-post=<?php echo $post['id'] ?>">
+                                                                        href="posts.php?delete-post=<?php echo $post['id'] ?>">
                                                                 </a>
                                                         </td>
                                                 </tr>

@@ -1,4 +1,138 @@
 <?php 
+
+// Initialize variables
+$isEditingPost = false;
+$post_id = 0;
+$title = "";
+$body = "";
+$topic_id = "";
+$published = 0;
+$featured_image = "";
+
+// Function to get all posts from the posts table
+function getAllPosts() {
+    global $conn;
+        
+        // Admin can view all posts
+        // Author can only view their posts
+        if ($_SESSION['user']['role'] == "Admin") {
+                $sql = "SELECT * FROM posts";
+        } elseif ($_SESSION['user']['role'] == "Author") {
+                $user_id = $_SESSION['user']['id'];
+                $sql = "SELECT * FROM posts WHERE user_id=$user_id";
+        }
+        $result = mysqli_query($conn, $sql);
+        $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $final_posts = array();
+        foreach ($posts as $post) {
+                $post['author'] = getAdminUsers($post['user_id']);
+                array_push($final_posts, $post);
+        }
+        return $final_posts;
+}
+
+// Function to handle post creation or editing 
+if (isset($_POST['save_post'])) {
+    $post_id = isset($_POST['post_id']) ? $_POST['post_id'] : 0;
+    $title = esc($_POST['title']);
+    $body = esc($_POST['body']);
+    $topic_id = isset($_POST['topic_id']) ? esc($_POST['topic_id']) : null;
+    $published = isset($_POST['publish']) ? 1 : 0;
+
+    // Handle image upload 
+    if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != "") {
+        $featured_image = time() . '_' . $_FILES['image']['name'];
+        $upload_dir = ROOT_PATH . "/uploads/posts/";
+
+        // Check if the directory exists, if not, create it
+        if (!file_exists($upload_dir)) {
+            mkdir($upload_dir, 0777, true); // Creates the directory with write permissions
+        }
+
+        $target = $upload_dir . $featured_image;
+
+        // Move the uploaded file to the target directory
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+            die("Failed to upload image");
+        }
+
+    } else {
+        // Keep the existing image if editing and no new image is uploaded
+        if ($isEditingPost) {
+            $sql = "SELECT image FROM posts WHERE id='$post_id' LIMIT 1";
+            $result = mysqli_query($conn, $sql);
+            $post = mysqli_fetch_assoc($result);
+            $featured_image = $post['image'];
+        }
+    }
+
+    if ($isEditingPost) {
+        // Update the post record
+        $sql = "UPDATE posts SET title='$title', body='$body', topic_id='$topic_id', published='$published', featured_image='$featured_image' WHERE id='$post_id'";
+        if (!mysqli_query($conn, $sql)) {
+            die("Query failed: " . mysqli_error($conn));
+        } else {
+            $_SESSION['message'] = "Post updated successfully";
+            header('Location: posts.php'); // redirect after update
+            exit(0);
+        }
+    } else {
+        // Insert new post record
+        $sql = "INSERT INTO posts (title, body, id, published, image) VALUES ('$title', '$body', '$topic_id', '$published', '$featured_image')";
+        if (!mysqli_query($conn, $sql)) {
+            die("Query failed: " . mysqli_error($conn));
+        } else {
+            $_SESSION['message'] = "Post created successfully";
+            header('Location: posts.php'); // redirect after creation
+            exit(0);
+        }
+    }
+}
+
+// Function to escape form inputs (only declare if it hasn't been declared yet)
+if (!function_exists('esc')) {
+    function esc(String $value) {
+        global $conn;
+        $val = trim($value);
+        return mysqli_real_escape_string($conn, $val);
+    }
+}
+
+// Function to delete posts
+function deletePost($post_id) {
+    global $conn;
+
+    // First, get the post to delete the image file
+    $sql = "SELECT image FROM posts WHERE id=$post_id";
+    $result = mysqli_query($conn, $sql);
+    $post = mysqli_fetch_assoc($result);
+
+    if ($post) {
+        $featured_image = $post['image'];
+        $image_path = ROOT_PATH . "/uploads/posts/" . $featured_image;
+
+        // Delete the post image file if it exists
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+
+        // Now, delete the post record from the database
+        $sql = "DELETE FROM posts WHERE id=$post_id LIMIT 1";
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION['message'] = "Post successfully deleted";
+            header("Location: posts.php");
+            exit(0);
+        } else {
+            $_SESSION['message'] = "Failed to delete post";
+        }
+    }
+}
+
+?>
+
+
+<!-- 
 // Post variables
 $post_id = 0;
 $isEditingPost = false;
@@ -213,4 +347,4 @@ function togglePublishPost($post_id, $message)
             exit(0);
     }
 }
-?> 
+?>  -->
