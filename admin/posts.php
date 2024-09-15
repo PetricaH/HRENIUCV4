@@ -24,12 +24,13 @@
                                 <h1 style="text-align: center; margin-top: 20px;">No posts in the database.</h1>
                         <?php else: ?>
                                 <table class="table">
-                                                <thead>
-                                                <th>N</th>
+                                        <thead>
+                                                <th>No</th>
                                                 <th>Author</th>
                                                 <th>Title</th>
                                                 <th>Category</th>
-                                                <th>Views</th>
+                                                <th>Published</th>
+                                                <th>Image</th>
                                                 <!-- Only Admin can publish/unpublish post -->
                                                 <?php if ($_SESSION['user']['role'] == "Admin"): ?>
                                                         <th><small>Publish</small></th>
@@ -49,7 +50,8 @@
                                                                 </a>
                                                         </td>
                                                         <td><?php echo $post['id']; ?></td>
-                                                        <td><?php echo $post['views']; ?></td>
+                                                        <td><?php echo $post['published'] ? "Yes" : "No"; ?></td>
+                                                        <td><img src="<?php echo BASE_URL . '/uploads/posts/' . $post['image']; ?>" alt="" style="height: 60px;"></td>
                                                         
                                                         <!-- Only Admin can publish/unpublish post -->
                                                         <?php if ($_SESSION['user']['role'] == "Admin" ): ?>
