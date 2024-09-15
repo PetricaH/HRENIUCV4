@@ -79,7 +79,7 @@ if (isset($_POST['save_post'])) {
         }
     } else {
         // Insert new post record
-        $sql = "INSERT INTO posts (title, body, topic_id, published, image, user_id) VALUES ('$title', '$body', '$topic_id', '$published', '$image', '" . $_SESSION['user']['id'] . "')";
+        $sql = "INSERT INTO posts (title, body, id, published, image, user_id) VALUES ('$title', '$body', '$topic_id', '$published', '$image', '" . $_SESSION['user']['id'] . "')";
         if (!mysqli_query($conn, $sql)) {
             die("Query failed: " . mysqli_error($conn));
         } else {
@@ -88,7 +88,7 @@ if (isset($_POST['save_post'])) {
             exit(0);
         }
     }
-}
+} 
 
 // Function to escape form inputs (only declare if it hasn't been declared yet)
 if (!function_exists('esc')) {
@@ -135,6 +135,31 @@ if (isset($_GET['delete-post'])) {
         $post_id = $_GET['delete-post'];
         deletePost($post_id);
 }
+
+       // if user clicks the publish post button
+       if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
+        $message = "";
+        if (isset($_GET['publish'])) {
+                $message = "Post published successfully";
+                $post_id = $_GET['publish'];
+        } else if (isset($_GET['unpublish'])) {
+                $message = "Post successfully unpublished";
+                $post_id = $_GET['unpublish'];
+        }
+        togglePublishPost($post_id, $message);
+    }
+    // delete blog post
+    function togglePublishPost($post_id, $message)
+    {
+        global $conn;
+        $sql = "UPDATE posts SET published=!published WHERE id=$post_id";
+        
+        if (mysqli_query($conn, $sql)) {
+                $_SESSION['message'] = $message;
+                header("location: posts.php");
+                exit(0);
+        }
+    }
 
 ?>
 
