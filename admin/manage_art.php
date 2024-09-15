@@ -33,7 +33,8 @@ if (isset($_GET['delete-art'])) {
                 <table class="table">
                     <thead>
                         <th>No</th>
-                        <th>Art Name</th>
+                        <th>Author</th>
+                        <th>Title</th>
                         <th>Category</th>
                         <th>Published</th>
                         <th>Image</th>
@@ -43,6 +44,7 @@ if (isset($_GET['delete-art'])) {
                         <?php foreach ($arts as $key => $art): ?>
                             <tr>
                                 <td><?php echo $key + 1; ?></td>
+                                <td><?php echo $post['user_id']; ?></td>
                                 <td><?php echo $art['title']; ?></td>
                                 <td><?php echo $art['category']; ?></td>
                                 <td><?php echo $art['published'] ? "Yes" : "No"; ?></td>

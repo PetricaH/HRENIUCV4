@@ -206,6 +206,7 @@ function updateAdmin($request_values){
     // set edit state to false
     $isEditingUser = false;
 }
+
 // returns all the admin users and their corresponding roles
 function getAdminUsers() {
     global $conn, $roles;

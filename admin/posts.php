@@ -28,6 +28,7 @@
                                                 <th>N</th>
                                                 <th>Author</th>
                                                 <th>Title</th>
+                                                <th>Category</th>
                                                 <th>Views</th>
                                                 <!-- Only Admin can publish/unpublish post -->
                                                 <?php if ($_SESSION['user']['role'] == "Admin"): ?>
@@ -47,6 +48,7 @@
                                                                         <?php echo $post['title']; ?>     
                                                                 </a>
                                                         </td>
+                                                        <td><?php echo $post['id']; ?></td>
                                                         <td><?php echo $post['views']; ?></td>
                                                         
                                                         <!-- Only Admin can publish/unpublish post -->
