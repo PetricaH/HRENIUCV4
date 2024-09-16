@@ -6,23 +6,10 @@ $art_id = 0;
 $name = "";
 $description = "";
 $category_id = "";
-$published = false;
+$published = 0;
 $art_image = "";
 
 // Function to get all artworks from the art table
-/* function getAllArtworks() {
-    global $conn;
-    $sql = "SELECT a.*, c.name AS category FROM art a LEFT JOIN art_categories c ON a.art_category_id = c.id ORDER BY a.created_at DESC";
-    $result = mysqli_query($conn, $sql);
-
-    if (!$result) {
-        die("Query failed: " . mysqli_error($conn));
-    }
-
-    $arts = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    return $arts;
-} */
-
 function getAllArtworks() {
     global $conn;
 
@@ -41,7 +28,29 @@ function getAllArtworks() {
         array_push($final_arts, $art);
     }
     return $final_arts;
-}
+} 
+
+/* function getAllArtworks() {
+    global $conn;
+    
+    if ($_SESSION['user']['role'] == "Admin") {
+        $sql = "SELECT art.*, users.username FROM art JOIN users ON art.user_id = users.id";
+    } elseif ($_SESSION['user']['role'] == "Author") {
+        $user_id = $_SESSION['user']['id'];
+        $sql = "SELECT art.*, users.username FROM art JOIN users ON art.user_id = users.id WHERE art.user_id=$user_id";
+    }
+
+    $result = mysqli_query($conn, $sql);
+    $arts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $final_arts = array();
+    foreach ($arts as $art) {
+        $post['author'] = getAdminUsers($art['user_id']);
+        array_push($final_arts, $art);
+    }
+
+    return $final_arts;
+} */
 
 
 // Function to get all categories
