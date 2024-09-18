@@ -10,25 +10,35 @@ $published = 0;
 $art_image = "";
 
 // Function to get all artworks from the art table
+
 function getAllArtworks() {
     global $conn;
 
     if ($_SESSION['user']['role'] == "Admin") {
-        $sql = "SELECT * FROM art";
-    } elseif ($_SESSION['user']['role'] =="Author") {
+        $sql = "SELECT art.*, users.username
+                FROM art 
+                LEFT JOIN users ON art.user_id = users.id";
+    } elseif ($_SESSION['user']['role'] == "Author") {
         $user_id = $_SESSION['user']['id'];
-        $sql = "SELECT * FROM art WHERE user_id=$user_id";
-        }
+        $sql = "SELECT art.*, users.username 
+                FROM art 
+                LEFT JOIN users ON art.user_id = users.id
+                WHERE art.user_id=$user_id";
+    }
+
     $result = mysqli_query($conn, $sql);
     $arts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     $final_arts = array();
     foreach ($arts as $art) {
-        $post['author'] = getAdminUsers($art['user_id']);
+        $art['author'] = $art['username']; // Add the author's username directly
+        unset($art['username']); // Remove the username field if you don't need it in the final output
         array_push($final_arts, $art);
     }
+
     return $final_arts;
-} 
+}
+
 
 /* function getAllArtworks() {
     global $conn;
