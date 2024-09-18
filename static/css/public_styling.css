@@ -417,7 +417,7 @@ ul li a {
     display: flex;
     justify-content: center; /* Horizontally center the whole container */
     align-items: center;
-    padding: 20px;
+    padding-right: 30%;
 }
 
 /* Child container for the cards */
@@ -433,8 +433,8 @@ ul li a {
 .post-card {
     background-color: #ddd;
     border-radius: 10px;
-    width: 270px; /* Fixed width for each card */
-    height: 390px;
+    width: 200px; /* Fixed width for each card */
+    height: 400px;
     overflow: hidden;
     position: relative; /* To allow positioning of the gradient and buttons */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
@@ -445,6 +445,7 @@ ul li a {
     width: 100%;
     height: 100%; /* Ensure image takes full card */
     object-fit: cover; /* Maintain aspect ratio and cover the card */
+    z-index: 0; /* Ensure the image is behind the text */
 }
 
 /* Move the 2nd and 4th cards down */
@@ -462,18 +463,22 @@ ul li a {
     right: 0;
     height: 35%; /* Adjust height of gradient overlay */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 1; /* Ensure gradient is above the image */
 }
 
 /* Button and text to be placed over the gradient */
 .post_info {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     left: 0;
     right: 0;
     padding: 10px;
     color: #fff; /* White text for contrast */
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    z-index: 2; /* Ensure the text is above the gradient and image */
 }
 
 /* Category button */
@@ -484,19 +489,22 @@ ul li a {
     border-radius: 20px;
     text-decoration: none;
     margin-bottom: 10px;
+    z-index: 2; /* Ensures the button is above the image */
 }
 
 /* Title */
 .post-card h3 {
     font-size: 1.2em;
     margin: 10px 0;
-    color: red; /* White for contrast */
+    color: white; /* White for contrast */
+    z-index: 2;
 }
 
 /* Date */
-.info > .post-date {
-    font-size: 0.9em;
-    color: #ddd; /* Light color for date */
+.post-card .post-date {
+    font-size: 0.5em;
+    color: white; /* White for contrast */
+    z-index: 2;
 }
 
 /* Read more button */
@@ -504,6 +512,9 @@ ul li a {
     color: #f2f2f2; /* White for contrast */
     cursor: pointer;
     transition: transform 0.3s ease;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
 }
 
 /* Hover effect on Read More */
@@ -522,4 +533,3 @@ ul li a {
         width: 100%; /* Make cards full-width on smaller screens */
     }
 }
-

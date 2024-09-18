@@ -94,21 +94,19 @@ $artworks = array_slice($artworks, 0, 4);
                                     <div class="post-card">
                                         <img src="<?php echo BASE_URL . '/uploads/art/' . $art['art_image']; ?>" class="post_image" alt="">
 
-                                        <?php if (isset($art['category']['name'])): ?>
-                                            <a href="<?php echo BASE_URL . 'filtered_arts.php?category=' . $art['category']['id']; ?>" class="btn category">
-                                                <?php echo $art['category']['name']; ?>
-                                            </a>
-                                        <?php endif; ?>
+                                        <div class="post_info">
+                                                    <h3><?php echo $art['title']; ?></h3>
+                                                    <?php if (isset($art['category']['name'])): ?>
+                                                        <a href="<?php echo BASE_URL . 'filtered_arts.php?category=' . $art['category']['id']; ?>" class="btn category">
+                                                            <?php echo $art['category']['name']; ?>
+                                                        </a>
+                                                    <?php endif; ?>
 
-                                        <h3><?php echo $art['title']; ?></h3>
-                                        <span><?php echo date("F j, Y", strtotime($art["created_at"])); ?></span>
-                                        <a href="single_art.php?art-id=<?php echo $art['id']; ?>">
-                                            <div class="post_info">
-                                                <div class="info">
+                                                    <span class="post-date"><?php echo date("F j, Y", strtotime($art["created_at"])); ?></span> 
+                                                    <a href="single_art.php?art-id=<?php echo $art['id']; ?>">
                                                     <span class="read_more">
                                                         <span class="material-symbols-outlined expand_content_btn">expand_content</span>
                                                     </span>
-                                                </div>
                                             </div>
                                         </a>
                                     </div>
