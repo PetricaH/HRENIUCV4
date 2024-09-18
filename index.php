@@ -5,11 +5,14 @@
 <?php $posts = getPublishedPosts(); ?>
 <?php $artworks = getPublishedArtworks(); ?>
 <?php $webdevprojects = getPublishedWebdevProjects(); ?>
+<?php
+// Display only the latest 4 posts
+$artworks = array_slice($artworks, 0, 4);
+?>
     <title>Hreniuc Petrică</title>
 </head>
 <body>
     <!--  container - wraps the whole page -->
-    <div class="container">
         <div class="hero-section">
             <!-- navbar -->
             <?php include( ROOT_PATH . '/includes/navbar.php') ?>
@@ -34,65 +37,83 @@
                 </div>
             </div>
         </div>
-        <section id="my-work-section">
+    <section id="my-work-section">
             <h2 class="my-work-section-title">mY worK</h2>
 
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION START -->
-            <div class="different-section">
-                <h2 class="content-title">Recent Web Development Projects</h2>
-                <hr>
-                <div class="different-section-content">
-                    <?php foreach ($webdevprojects as $webdevproject): ?>
-                        <div class="post" style="margin-left: 0px;">
-                            <img src="<?php echo BASE_URL . '/uploads/projects/' . $webdevproject['project_image']; ?>" class="post_image" alt="">
+            <div class="different-section web-dev-section">
+                <div class="text-part-web-dev-section">
+                    <div class="text-part-web-dev-section-inside">
+                        <h2 class="content-title web-dev-title">Web Development</h2>
+                        <p>With over 2 years of practical experience, I can provide exceptional services of developing websites that bring, keep, and make customers.</p>
+                        <button class="ask-for-rates-btn">Ask for Rates</button>
+                    </div>
+                </div>
+                <div class="post-part-web-dev-section">
+                    <div class="different-section-content">
+                        <?php foreach ($webdevprojects as $webdevproject): ?>
+                            <div class="post" style="margin-left: 0px;">
+                                <img src="<?php echo BASE_URL . '/uploads/projects/' . $webdevproject['project_image']; ?>" class="post_image" alt="">
 
-                            <?php if (isset($webdevproject['category']['name'])): ?>
-                            <a href="<?php echo BASE_URL . 'filtered_projects.php?category=' . $webdevproject['category']['id']; ?>" class="btn category">
-                                <?php echo $webdevproject['category']['name']; ?>
-                            </a>
-                            <?php endif ?>
+                                <?php if (isset($webdevproject['category']['name'])): ?>
+                                <a href="<?php echo BASE_URL . 'filtered_projects.php?category=' . $webdevproject['category']['id']; ?>" class="btn category">
+                                    <?php echo $webdevproject['category']['name']; ?>
+                                </a>
+                                <?php endif ?>
 
-                            <h3><?php echo $webdevproject['title']; ?></h3>
-                            <span><?php echo date("F j, Y", strtotime($webdevproject["created_at"])); ?></span>
-                            <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>">
-                                <div class="post_info">
-                                    <div class="info">
-                                        <span class="read_more">View more...</span>
+                                <h3><?php echo $webdevproject['title']; ?></h3>
+                                <span><?php echo date("F j, Y", strtotime($webdevproject["created_at"])); ?></span>
+                                <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>">
+                                    <div class="post_info">
+                                        <div class="info">
+                                            <span class="read_more">
+                                                <span class="material-symbols-outlined expand_content_btn">expand_content</span>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION END -->
 
             <!-- RECENT ARTWORKS SECTION START -->
-            <div class="different-section">
-                        <h2 class="content-title">Recent Artworks</h2>
-                        <hr>
-                        <div class="different-section-content">
+            <div class="different-section art-section">
+                        <div class="text-part-art-section">
+                            <div class="text-part-art-section-inside">
+                                <h2 class="content-title art-title">Recent Artworks</h2>
+                                <p>Started as a hobby and passion, still is up to this date. Over 5+ years of constantly creating digital art has trained my eyes for beauty, being able to design gorgeous products.</p>
+                                <button class="ask-for-rates-btn">Ask for Rates</button>
+                            </div>
+                        </div>
+                        <div class="post-part-web-dev-section">
+                            <div class="different-section-content">
                                 <?php foreach ($artworks as $art): ?>
-                                        <div class="post" style="margin-left: 0px;">
-                                                <img src="<?php echo BASE_URL . '/uploads/art/' . $art['art_image']; ?>" class="post_image" alt="">
+                                    <div class="post-card">
+                                        <img src="<?php echo BASE_URL . '/uploads/art/' . $art['art_image']; ?>" class="post_image" alt="">
 
-                                                <?php if (isset($art['category']['name'])): ?>
-                                                <a href="<?php echo BASE_URL . 'filtered_arts.php?category=' . $art['category']['id']; ?>" class="btn category">
-                                                        <?php echo $art['category']['name']; ?>
-                                                </a>
-                                                <?php endif ?>
+                                        <?php if (isset($art['category']['name'])): ?>
+                                            <a href="<?php echo BASE_URL . 'filtered_arts.php?category=' . $art['category']['id']; ?>" class="btn category">
+                                                <?php echo $art['category']['name']; ?>
+                                            </a>
+                                        <?php endif; ?>
 
-                                                <h3><?php echo $art['title']; ?></h3>
-                                                <span><?php echo date("F j, Y", strtotime($art["created_at"])); ?></span>
-                                                <a href="single_art.php?art-id=<?php echo $art['id']; ?>">
-                                                <div class="post_info">
-                                                        <div class="info">
-                                                        <span class="read_more">View more...</span>
-                                                        </div>
+                                        <h3><?php echo $art['title']; ?></h3>
+                                        <span><?php echo date("F j, Y", strtotime($art["created_at"])); ?></span>
+                                        <a href="single_art.php?art-id=<?php echo $art['id']; ?>">
+                                            <div class="post_info">
+                                                <div class="info">
+                                                    <span class="read_more">
+                                                        <span class="material-symbols-outlined expand_content_btn">expand_content</span>
+                                                    </span>
                                                 </div>
-                                                </a>
-                                        </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 <?php endforeach; ?>
+                            </div>
                         </div>
                 </div>
 
@@ -121,8 +142,10 @@
                                                         <div class="post_info">
                                                                 <h3><?php echo $post['title'] ?></h3>
                                                                 <div class="info">
-                                                                        <span><?php echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
-                                                                        <span class="read_more">Read more...</span>
+                                                                        <span class="post-date"><?php echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
+                                                                        <span class="read_more">
+                                                                            <span class="material-symbols-outlined expand_content_btn">expand_content</span>
+                                                                        </span>
                                                                 </div>
                                                         </div>
                                                 </a>
@@ -130,9 +153,7 @@
                                 <?php endforeach ?>
                         </div>
                         <!-- RECENT ARTICLES SECTION END -->
-        </section>
-    </div>
- 
+    </section>
 
 <!-- footer -->
 <?php include( ROOT_PATH . '/includes/footer.php') ?>

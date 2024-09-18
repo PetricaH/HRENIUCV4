@@ -24,10 +24,6 @@ a {
     text-decoration: none;
 }
 
-.container {
-    height: 100%;
-}
-
 /* Base styles for navbar */
 @media (min-width: 1500px) {
 
@@ -194,6 +190,11 @@ ul li a {
     .hero-section-copy-container-groups {
         transform: translate(-50%, 50%) !important;
     }
+
+    .web-dev-section {
+        grid-template-columns: 1fr;  /* Switch to one column */
+        grid-template-rows: auto auto;  /* Create two rows */
+    }
 }
 
 /* hero section */
@@ -306,7 +307,7 @@ ul li a {
     color: rgba(242, 242, 242, .7);
 }
 
-.hero-section-copy-container-buttons-group-subgroup a:nth-child(3): {
+.hero-section-copy-container-buttons-group-subgroup a:nth-child(3) {
     color: rgba(193, 53, 132, .7);
 }
 
@@ -327,11 +328,198 @@ ul li a {
 #my-work-section {
     position: relative;
     margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .my-work-section-title {
     color: #001E1A;
     font-size: 5rem;
-    text-align: center;
     font-weight: 200;
 }
+
+.different-section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f2f2f2;
+}
+
+.different-section p {
+    color: #f2f2f2;
+    font-size: 1rem;
+    font-weight: 200;
+    max-width: 400px;
+}
+
+.ask-for-rates-btn {
+    margin-top: 50px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;  
+    background-color: #b0e4dd;
+    color: #001E1A;
+    font-weight: bold;
+}
+
+.ask-for-rates-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);     
+    color: #fff;
+    cursor: pointer;
+}
+
+.web-dev-section,
+.art-section {
+    width: 90%;
+    background-color: #001E1A;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    justify-content: center;
+    align-content: center;
+    height: 500px;
+    border-radius: 8px;
+    margin-top: 100px;
+}
+
+.text-part-web-dev-section,
+.text-part-art-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-part-web-dev-section-inside,
+.text-part-art-section-inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-part-web-dev-section,
+.post-part-art-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.post_image {
+    background-size: cover;
+    width: 30px;
+}
+
+/* Parent container */
+.post-part-web-dev-section {
+    display: flex;
+    justify-content: center; /* Horizontally center the whole container */
+    align-items: center;
+    padding: 20px;
+}
+
+/* Child container for the cards */
+.different-section-content {
+    display: flex;
+    justify-content: space-between; /* Spread cards evenly */
+    max-width: 1200px; /* Maximum width for section */
+    position: relative;
+    gap: 25px;
+}
+
+/* Each individual card */
+.post-card {
+    background-color: #ddd;
+    border-radius: 10px;
+    width: 270px; /* Fixed width for each card */
+    height: 390px;
+    overflow: hidden;
+    position: relative; /* To allow positioning of the gradient and buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Image to take the whole card */
+.post_image {
+    width: 100%;
+    height: 100%; /* Ensure image takes full card */
+    object-fit: cover; /* Maintain aspect ratio and cover the card */
+}
+
+/* Move the 2nd and 4th cards down */
+.post-card:nth-child(2), 
+.post-card:nth-child(4) {
+    margin-top: 50px; /* Move these cards down slightly */
+}
+
+/* Gradient overlay at the bottom */
+.post-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%; /* Adjust height of gradient overlay */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+/* Button and text to be placed over the gradient */
+.post_info {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    color: #fff; /* White text for contrast */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Category button */
+.category {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+/* Title */
+.post-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: red; /* White for contrast */
+}
+
+/* Date */
+.info > .post-date {
+    font-size: 0.9em;
+    color: #ddd; /* Light color for date */
+}
+
+/* Read more button */
+.expand_content_btn {
+    color: #f2f2f2; /* White for contrast */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect on Read More */
+.read_more:hover {
+    transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .different-section-content {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        align-items: center;
+    }
+
+    .post-card {
+        width: 100%; /* Make cards full-width on smaller screens */
+    }
+}
+
