@@ -461,8 +461,8 @@ ul li a {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 35%; /* Adjust height of gradient overlay */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    height: 60%; /* Adjust height of gradient overlay */
+    background: linear-gradient(to top, rgba(0, 0, 0, .9), transparent);
     z-index: 1; /* Ensure gradient is above the image */
 }
 
@@ -473,7 +473,7 @@ ul li a {
     left: 0;
     right: 0;
     padding: 10px;
-    color: #fff; /* White text for contrast */
+    color: #fff; /* White text for cntrast */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
