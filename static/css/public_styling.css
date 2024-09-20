@@ -383,7 +383,7 @@ ul li a {
 
 .web-dev-section,
 .art-section,
-.articles-section {
+.marketing-section {
     width: 90%;
     background-color: #001E1A;
     display: grid;
@@ -397,21 +397,24 @@ ul li a {
 }
 
 .text-part-web-dev-section,
-.text-part-art-section {
+.text-part-art-section,
+.text-part-marketing-section {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .text-part-web-dev-section-inside,
-.text-part-art-section-inside {
+.text-part-art-section-inside,
+.text-part-marketing-section-inside {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .post-part-web-dev-section,
-.post-part-art-section {
+.post-part-art-section,
+.post-part-marketing-section {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
