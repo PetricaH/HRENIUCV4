@@ -60,16 +60,13 @@ $artworks = array_slice($artworks, 0, 4);
                                     <?php echo $webdevproject['category']['name']; ?>
                                 </a>
                                 <?php endif ?>
-
-                                <h3><?php echo $webdevproject['title']; ?></h3>
-                                <span><?php echo date("F j, Y", strtotime($webdevproject["created_at"])); ?></span>
-                                <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>">
                                     <div class="post_info">
-                                        <div class="info">
+                                        <h3><?php echo $webdevproject['title']; ?></h3>
+                                        <span class="post-date"><?php echo date("F j, Y", strtotime($webdevproject["created_at"])); ?></span>
+                                        <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>">
                                             <span class="read_more">
                                                 <span class="material-symbols-outlined expand_content_btn">expand_content</span>
                                             </span>
-                                        </div>
                                     </div>
                                 </a>
                             </div>
@@ -88,7 +85,7 @@ $artworks = array_slice($artworks, 0, 4);
                                 <button class="ask-for-rates-btn">Ask for Rates</button>
                             </div>
                         </div>
-                        <div class="post-part-web-dev-section">
+                        <div class="post-part-art-section">
                             <div class="different-section-content">
                                 <?php foreach ($artworks as $art): ?>
                                     <div class="post-card">

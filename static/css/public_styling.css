@@ -195,6 +195,15 @@ ul li a {
         grid-template-columns: 1fr;  /* Switch to one column */
         grid-template-rows: auto auto;  /* Create two rows */
     }
+
+    .different-section-content {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        align-items: center;
+    }
+
+    .post-card {
+        width: 100%; /* Make cards full-width on smaller screens */
+    }
 }
 
 /* hero section */
@@ -407,26 +416,13 @@ ul li a {
     flex-wrap: nowrap;
 }
 
-.post_image {
-    background-size: cover;
-    width: 30px;
-}
-
-/* Parent container */
-.post-part-web-dev-section {
-    display: flex;
-    justify-content: center; /* Horizontally center the whole container */
-    align-items: center;
-    padding-right: 30%;
-}
-
 /* Child container for the cards */
 .different-section-content {
     display: flex;
     justify-content: space-between; /* Spread cards evenly */
     max-width: 1200px; /* Maximum width for section */
     position: relative;
-    gap: 25px;
+    gap: 20px;
 }
 
 /* Each individual card */
@@ -522,16 +518,4 @@ ul li a {
 /* Hover effect on Read More */
 .material-symbols-outlined.expand_content_btn:hover {
     transform: scale(1.1); /* Slight enlargement on hover */
-}
-
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-    .different-section-content {
-        flex-direction: column; /* Stack cards vertically on smaller screens */
-        align-items: center;
-    }
-
-    .post-card {
-        width: 100%; /* Make cards full-width on smaller screens */
-    }
 }
