@@ -382,11 +382,12 @@ ul li a {
 }
 
 .web-dev-section,
-.art-section {
+.art-section,
+.articles-section {
     width: 90%;
     background-color: #001E1A;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: .4fr .6fr; 
     gap: 10px; 
     justify-content: center;
     align-content: center;
