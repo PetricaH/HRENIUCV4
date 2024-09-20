@@ -509,7 +509,7 @@ ul li a {
 
 /* Read more button */
 .expand_content_btn {
-    color: #f2f2f2; /* White for contrast */
+    color: red; /* White for contrast */
     cursor: pointer;
     transition: transform 0.3s ease;
     position: absolute;
@@ -518,7 +518,7 @@ ul li a {
 }
 
 /* Hover effect on Read More */
-.read_more:hover {
+.material-symbols-outlined.expand_content_btn:hover {
     transform: scale(1.1); /* Slight enlargement on hover */
 }
 
