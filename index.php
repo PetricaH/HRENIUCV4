@@ -10,6 +10,9 @@
 $artworks = array_slice($artworks, 0, 4);
 $posts = array_slice($posts, 0, 4); 
 ?>
+<?php if ($success): ?>
+    <p class="success">Your message has been sent successfully!</p> 
+<?php endif; ?>
     <title>Hreniuc Petrică</title>
 </head>
 <body>
