@@ -8,6 +8,7 @@
 <?php
 // Display only the latest 4 posts
 $artworks = array_slice($artworks, 0, 4);
+$posts = array_slice($posts, 0, 4); 
 ?>
     <title>Hreniuc Petrică</title>
 </head>
@@ -42,6 +43,7 @@ $artworks = array_slice($artworks, 0, 4);
 
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION START -->
             <div class="different-section web-dev-section">
+                
                 <div class="text-part-web-dev-section">
                     <div class="text-part-web-dev-section-inside">
                         <h2 class="content-title web-dev-title">Web Development</h2>
@@ -49,6 +51,7 @@ $artworks = array_slice($artworks, 0, 4);
                         <button class="ask-for-rates-btn">Ask for Rates</button>
                     </div>
                 </div>
+            
                 <div class="post-part-web-dev-section">
                     <div class="different-section-content">
                         <?php foreach ($webdevprojects as $webdevproject): ?>
@@ -78,6 +81,7 @@ $artworks = array_slice($artworks, 0, 4);
 
             <!-- RECENT ARTWORKS SECTION START -->
             <div class="different-section art-section">
+
                         <div class="text-part-art-section">
                             <div class="text-part-art-section-inside">
                                 <h2 class="content-title art-title">Recent Artworks</h2>
@@ -85,6 +89,7 @@ $artworks = array_slice($artworks, 0, 4);
                                 <button class="ask-for-rates-btn">Ask for Rates</button>
                             </div>
                         </div>
+
                         <div class="post-part-art-section">
                             <div class="different-section-content">
                                 <?php foreach ($artworks as $art): ?>
@@ -110,6 +115,7 @@ $artworks = array_slice($artworks, 0, 4);
                                 <?php endforeach; ?>
                             </div>
                         </div>
+
                 </div>
 
 
@@ -129,7 +135,6 @@ $artworks = array_slice($artworks, 0, 4);
                             <div class="different-section-content">
                                 <?php foreach ($posts as $post): ?>
                                     <div class="post-card">
-                                        <div class="post" style="margin-left: 0px;">
                                                 <img src="<?php echo BASE_URL . 'uploads/posts/' . $post['image']; ?>" class="post_image" alt="">
 
                                         <div class="post_info">
