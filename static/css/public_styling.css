@@ -204,7 +204,7 @@ ul li a {
         background-color: #001E1A;
         display: grid;
         grid-template-columns: 1fr 1fr; 
-        gap: 10px; 
+        gap: 50px; 
         justify-content: center;
         align-content: center;
         border-radius: 8px;
@@ -214,18 +214,19 @@ ul li a {
     
     /* Child container for the cards */
     .different-section-content {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        position: relative;
-        gap: 10px;
-        margin-top: 50px;
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 1fr 1fr; 
+        gap: 10px 10px; 
+        grid-template-areas: 
+            ". ."
+            ". ."; 
     }
     
     .post-card {
         background-color: #ddd;
         border-radius: 10px;
-        width: 80px; 
+        width: 40vw; 
         height: 400px;
         overflow: hidden;
         position: relative; 
@@ -234,7 +235,7 @@ ul li a {
 
     .post-card:nth-child(2), 
     .post-card:nth-child(4) {
-        margin-top: 50px; 
+        margin-top: 0; 
     }
 }
 
@@ -370,7 +371,8 @@ ul li a {
  /* // hero section  */
 
 /* my-work section */
-#my-work-section {
+#my-work-section,
+#contact-section {
     position: relative;
     margin-top: 100px;
     display: flex;
@@ -379,16 +381,23 @@ ul li a {
     align-items: center;
 }
 
+#contact-section {
+    width: 100%;
+    background: url('../images/contact-bg.jpg');
+}
+
 .different-section {
     display: flex;
     flex-direction: row !important;
     flex-wrap: wrap;
 }
 
-.my-work-section-title {
+.my-work-section-title,
+.contact-section-title {
     color: #001E1A;
     font-size: 5rem;
     font-weight: 200;
+    text-align: center;
 }
 
 .different-section h2 {

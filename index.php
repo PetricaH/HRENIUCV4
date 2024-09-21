@@ -43,7 +43,7 @@ $posts = array_slice($posts, 0, 4);
 
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION START -->
             <div class="different-section web-dev-section">
-                
+
                 <div class="text-part-web-dev-section">
                     <div class="text-part-web-dev-section-inside">
                         <h2 class="content-title web-dev-title">Web Development</h2>
@@ -158,6 +158,32 @@ $posts = array_slice($posts, 0, 4);
                     </div> 
                 </div>
                         <!-- RECENT DIGITAL MARKETING PROJECTS SECTION END -->
+    </section>
+
+    <section id="contact-section">
+        <h2 class="contact-section-title">contacT mE</h2>
+        <div class="contact-section-inside">
+            <form id="contactForm" action="contact.php" method="$_POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required> 
+                <br>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="message">Message</label>
+                <textarea name="message" id="message" required></textarea>
+                <br>
+
+                <!-- CAPTCHA -->
+                <label for="captcha">Enter the text from the image:</label>
+                <img src="captcha.php" class="captcha-img" alt="CAPTCHA Image">
+                <br>
+                <input type="text" id="captcha" name="captcha" required>
+                <br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </section>
 
 <!-- footer -->
