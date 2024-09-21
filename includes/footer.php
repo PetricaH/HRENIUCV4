@@ -3,5 +3,6 @@
                 </div>
         </div>
         <!-- // container -->
+        <script src="<?php echo BASE_URL; ?>/static/js/form-validation.js"></script>
 </body>
 </html>
