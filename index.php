@@ -10,12 +10,19 @@
 $artworks = array_slice($artworks, 0, 4);
 $posts = array_slice($posts, 0, 4); 
 ?>
-<?php if ($success): ?>
-    <p class="success">Your message has been sent successfully!</p> 
-<?php endif; ?>
+<?php
+    $success = false;
+    if (isset($_POST['submit'])) {
+        // Add form handling logic here, e.g., after form submission:
+        $success = true; 
+    }
+?>
     <title>Hreniuc Petrică</title>
 </head>
 <body>
+<?php if ($success): ?>
+    <p class="success">Your message has been sent successfully!</p> 
+<?php endif; ?>
     <!--  container - wraps the whole page -->
         <div class="hero-section">
             <!-- navbar -->
@@ -179,7 +186,7 @@ $posts = array_slice($posts, 0, 4);
 
                 <!-- CAPTCHA -->
                 <label for="captcha">Enter the text from the image:</label>
-                <img src="captcha.php" class="captcha-img" alt="CAPTCHA Image">
+                <img src="captcha.php?rand=<?php echo rand(); ?>" class="captcha-img" alt="CAPTCHA Image">
                 <br>
                 <input type="text" id="captcha" name="captcha" required>
                 <br>
