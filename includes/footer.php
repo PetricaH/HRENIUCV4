@@ -3,6 +3,6 @@
                 </div>
         </div>
         <!-- // container -->
-        <script src="<?php echo BASE_URL; ?>/static/js/form-validation.js"></script>
+        <script src="./static/js/animations.js"></script>
 </body>
 </html>
