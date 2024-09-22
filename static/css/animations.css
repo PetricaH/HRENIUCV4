@@ -1,0 +1,10 @@
+.post-card {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly lower */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animation properties */
+}
+
+.post-card.fade-in {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Move to original position */
+}
