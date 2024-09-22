@@ -52,7 +52,7 @@ $posts = array_slice($posts, 0, 4);
             <h2 class="my-work-section-title">mY worK</h2>
 
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION START -->
-            <div class="different-section web-dev-section">
+            <div class="different-section web-dev-subsection">
 
                 <div class="text-part-web-dev-section">
                     <div class="text-part-web-dev-section-inside">
@@ -90,7 +90,7 @@ $posts = array_slice($posts, 0, 4);
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION END -->
 
             <!-- RECENT ARTWORKS SECTION START -->
-            <div class="different-section art-section">
+            <div class="different-section art-subsection">
 
                         <div class="text-part-art-section">
                             <div class="text-part-art-section-inside">
@@ -133,7 +133,7 @@ $posts = array_slice($posts, 0, 4);
 
 
              <!-- RECENT DIGITAL MARKETING PROJECTS SECTION START -->
-                <div class="different-section marketing-section">
+                <div class="different-section marketing-subsection">
                     <div class="text-part-marketing-section">
                         <div class="text-part-marketing-section-inside">
                             <h2 class="content-title marketing-title">Digital Marketing</h2>
@@ -141,7 +141,7 @@ $posts = array_slice($posts, 0, 4);
                             <button class="ask-for-rates-btn">Ask for Rates</button>
                         </div>
                     </div>
-                    <div class="post-part-marketing-section">>
+                    <div class="post-part-marketing-section">
                             <div class="different-section-content">
                                 <?php foreach ($posts as $post): ?>
                                     <div class="post-card">
@@ -172,27 +172,33 @@ $posts = array_slice($posts, 0, 4);
 
     <section id="contact-section">
         <h2 class="contact-section-title">contacT mE</h2>
-        <div class="contact-section-inside">
-            <form id="contactForm" action="contact.php" method="$_POST">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required> 
-                <br>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-                <br>
-                <label for="message">Message</label>
-                <textarea name="message" id="message" required></textarea>
-                <br>
+        <div class="contact-section-main-group">
 
-                <!-- CAPTCHA -->
-                <label for="captcha">Enter the text from the image:</label>
-                <img src="captcha.php?rand=<?php echo rand(); ?>" class="captcha-img" alt="CAPTCHA Image">
-                <br>
-                <input type="text" id="captcha" name="captcha" required>
-                <br>
+            <div class="contact-section-text-part">
+                <div class="contact-section-text-part-inside">
+                    <h2>Ask<br>Me<br> Anything</h2>
+                    <p>Got any kind of project? Big or small? Complicated or simple? Contact me and let's work toghether.</p>
+                </div>
+            </div>
+            
+                <form id="contactForm" action="contact.php" method="$_POST">
+                    <input type="text" id="name" class="form-input" name="name" placeholder="your name..." required> 
+                    <br>
+                    <input type="email" id="email" class="form-input" name="email" placeholder="your email..." required>
+                    <br>
+                    <textarea name="message" id="message" class="form-input" rows="5" placeholder="your message..." required></textarea>
+                    <br>
 
-                <button type="submit">Submit</button>
-            </form>
+                    <!-- CAPTCHA -->
+                    <label for="captcha">Enter the text from the image:</label>
+                    <img src="captcha.php?rand=<?php echo rand(); ?>" class="captcha-img" alt="CAPTCHA Image">
+                    <br>
+                    <input type="text" id="captcha" class="form-input" name="captcha" placeholder="CAPTCHA code" required>
+                    <br>
+
+                    <button type="submit">Submit</button>
+                </form>
+
         </div>
     </section>
 
