@@ -242,8 +242,50 @@ ul li a {
         border-radius: 8px 0 0 8px !important;
     }
 
-    .contact-section-text-part:: ::after{
+    .contact-section-text-part::after{
         border-radius: 8px 0 0 8px !important;
+    }
+
+     /* Child container for the cards */
+    .different-section-content {
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr 1fr; 
+        grid-template-rows: 1fr; 
+        gap: 10px 10px; 
+        grid-template-areas: 
+            ". ."
+            ". ."; 
+    }
+
+    .post-card {
+        background-color: #ddd;
+        border-radius: 10px;
+        width: 13vw; 
+        height: 400px;
+        overflow: hidden;
+        position: relative; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
+
+    .post-card:nth-child(2), 
+    .post-card:nth-child(4) {
+        margin-top: 50px; 
+    }
+
+    .web-dev-subsection,
+    .art-subsection,
+    .marketing-subsection {
+        background-color: red;
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 1fr;
+        gap: 50px; 
+        justify-content: center;
+        align-content: center;
+        border-radius: 8px;
+        margin-top: 100px;
+        padding: 50px 15px;
     }
 }
 
