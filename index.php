@@ -196,7 +196,7 @@ $posts = array_slice($posts, 0, 4);
                     <input type="text" id="captcha" class="form-input" name="captcha" placeholder="CAPTCHA code" required>
                     <br>
 
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit-contact-form-btn">Submit</button>
                 </form>
 
         </div>

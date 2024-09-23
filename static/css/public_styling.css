@@ -715,7 +715,7 @@ ul li a {
 }
 
 .form-input:focus {
-    outline: 1px solid red;
+    outline: 1px solid #b0e4dd;
 }
 
 #message {
@@ -724,4 +724,23 @@ ul li a {
 
 .captcha-img {
     width: 150px;
+}
+
+#submit-contact-form-btn  {
+    margin-top: 50px;
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;  
+    background-color: #b0e4dd;
+    color: #001E1A;
+    font-weight: bold;
+}
+
+#submit-contact-form-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);     
+    color: #fff;
+    cursor: pointer;
 }
