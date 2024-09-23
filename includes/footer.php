@@ -1,8 +1,9 @@
 <div class="footer">
         <div class="footer-group">
                 <ul>
+                        <li>LEGAL</li>
                         <li>Home</li>
-                        <li>Concat</li>
+                        <li>Contact</li>
                         <li>Web Development</li>
                         <li>Digital Art</li>
                 </ul>
