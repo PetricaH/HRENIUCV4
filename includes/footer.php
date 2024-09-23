@@ -11,18 +11,18 @@
                         <li>Privacy Policy</li>
                         <li>Cookies</li>
                 </ul>
-                <div class="newsletter-subscribe">
-                        <p>Do you want to be up to date with the latest trends in any of the domains I'm active in?</p>
-                        <input type="text" id="email" name="email" required>
+                
+                <form id="newsletterForm" action="subscribe.php" method="POST">
+                        <label for="email">Subscribe to my newsletter</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email...">
                         <button type="submit">Subscribe</button>
-                </div>
-        </div>                   
-
-
-
+                </form>
+        </div>
  <!-- <p>MyViewers &copy; <?php echo date('Y'); ?></p> -->
 </div>
         <!-- // container -->
         <script src="./static/js/animations.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="./static/js/newsletterValidation.js"></script>
 </body>
 </html>
