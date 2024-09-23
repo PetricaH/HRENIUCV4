@@ -744,3 +744,22 @@ ul li a {
     color: #fff;
     cursor: pointer;
 }
+
+/* FOOTER DOWNWARDS */
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.footer-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    background-color: #001E1A;
+}
