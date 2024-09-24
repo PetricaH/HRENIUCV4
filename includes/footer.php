@@ -1,5 +1,6 @@
 <div class="footer">
         <div class="footer-group">
+
                 <ul>
                         <li>LEGAL</li>
                         <li>Home</li>
@@ -7,11 +8,12 @@
                         <li>Web Development</li>
                         <li>Digital Art</li>
                 </ul>
+
                 <ul>
                         <li>Privacy Policy</li>
                         <li>Cookies</li>
                 </ul>
-                
+
                 <form id="newsletterForm" action="subscribe.php" method="POST">
                         <label for="email">Subscribe to my newsletter</label>
                         <input type="email" id="email" name="email" required placeholder="Enter your email...">
