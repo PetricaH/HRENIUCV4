@@ -766,6 +766,11 @@ ul li a {
     display: flex;
     flex-direction: column;
     gap: 50px;
-    color: #b0e4dd;
+    color: rgba(176, 228, 221, .8);
     justify-content: space-around;
+}
+
+.footer-group > ul > li:hover {
+    color: rgba(176, 228, 221, 1);
+    cursor: pointer;
 }
