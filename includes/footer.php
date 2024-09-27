@@ -15,7 +15,7 @@
                 </ul>
 
                 <form id="newsletterForm" action="subscribe.php" method="POST">
-                        <label for="email">Subscribe to my newsletter</label>
+                        <label for="email" class="newsletter-label-text">Subscribe to my newsletter</label>
                         <input type="email" id="email" name="email" required placeholder="Enter your email...">
                         <button type="submit">Subscribe</button>
                 </form>

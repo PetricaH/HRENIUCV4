@@ -765,7 +765,7 @@ ul li a {
 .newsletter-subscribe {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 20px;
     color: rgba(176, 228, 221, .8);
     justify-content: space-around;
 }
@@ -773,4 +773,44 @@ ul li a {
 .footer-group > ul > li:hover {
     color: rgba(176, 228, 221, 1);
     cursor: pointer;
+}
+
+#newsletterForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#newsletterForm > button {
+    padding: 10px 30px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;  
+    background-color: #b0e4dd;
+    color: #001E1A;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#newsletterForm > button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);     
+    color: #fff;
+    cursor: pointer;
+}
+
+#email {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 5px;
+    outline: none;
+}
+
+#email:focus {
+    outline: 2px solid #00A991;
+}
+
+.newsletter-label-text { 
+    color: #b0e4dd;
 }
