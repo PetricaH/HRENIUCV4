@@ -713,6 +713,7 @@ ul li a {
     background-color: transparent;
     border-bottom: 1px solid #b0e4dd;
     width: 300px;
+    color: #b0e4dd;
 }
 
 .form-input:focus {
@@ -799,7 +800,7 @@ ul li a {
     cursor: pointer;
 }
 
-#email {
+#email-input-newsletter {
     border: none;
     padding: 10px 15px;
     border-radius: 8px;
@@ -807,8 +808,8 @@ ul li a {
     outline: none;
 }
 
-#email:focus {
-    outline: 2px solid #00A991;
+#email-input-newsletter:focus {
+    outline: 2px solid #b0e4dd;
 }
 
 .newsletter-label-text { 
