@@ -14,7 +14,7 @@
                         <li>Cookies</li>
                 </ul>
 
-                <form id="newsletterForm" action="subscribe.php" method="POST">
+                <form id="newsletterForm" action="subscribe.php" method="POST" novalidate>
                         <label for="email" class="newsletter-label-text">Subscribe to my newsletter</label>
                         <input type="email" id="email-input-newsletter" name="email" placeholder="Enter your email... "  required>
                         <button type="submit">Subscribe</button>
