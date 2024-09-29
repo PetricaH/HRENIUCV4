@@ -815,3 +815,9 @@ ul li a {
 .newsletter-label-text { 
     color: #b0e4dd;
 }
+
+#captcha-label {
+    color: #b0e4dd;
+    padding-top: 25px;
+    padding-bottom: 5px;
+}

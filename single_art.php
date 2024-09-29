@@ -5,9 +5,6 @@ include('includes/public_functions.php');
 // Fetch a single artwork by its slug
 if (isset($_GET['art-slug'])) {
     $artwork = getArtwork($_GET['art-slug']);
-} else {
-    header("Location: " . BASE_URL); // Redirect to homepage if no slug is provided
-    exit();
 }
 
 // Fetch all categories

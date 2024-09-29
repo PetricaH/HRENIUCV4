@@ -1,4 +1,4 @@
 {
-    "workbench.externalBrowser": "firefox",
+    "workbench.externalBrowser": "chrome",
     "liveServer.settings.AdvanceCustomBrowserCmdLine": "chrome"
 }

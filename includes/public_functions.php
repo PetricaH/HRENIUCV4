@@ -81,7 +81,7 @@ function getAllTopics() {
     return $topics;
 }
 
-// Function to get all published artworks
+// Function to get all published artworksg
 function getPublishedArtworks() {
     global $conn;
     $sql = "SELECT a.*, ac.name AS category_name, ac.id AS category_id
@@ -109,12 +109,16 @@ function getPublishedArtworks() {
 // Function to get a single artwork by its slug
 function getArtwork($slug) {
     global $conn;
-    $slug = mysqli_real_escape_string($conn, $slug);
-    $sql = "SELECT * FROM art WHERE slug='$slug' AND published=true";
+    // get single artwork slug
+    $artwork_slug = $_GET['artwork-slug'];
+    $sql = "SELECT * FROM art WHERE slug='$artwork_slug' AND published=true";
     $result = mysqli_query($conn, $sql);
+    
+    // fetch query results as associative array
     $artwork = mysqli_fetch_assoc($result);
     if ($artwork) {
-        $artwork['category'] = getArtCategory($artwork['art_category_id']);
+        // get the art category to which the artwork belongs
+        $artwork['art_category_id'] = getArtCategory($artwork['id']);
     }
     return $artwork;
 }

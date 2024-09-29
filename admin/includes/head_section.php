@@ -9,4 +9,4 @@
 <!-- ckeditor -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.8.0/ckeditor.js"></script>
 <!-- Styling for public area -->
-<link rel="stylesheet" href="../static/css/admin_styling.css">
+<link rel="stylesheet" type="text/css" href="../static/css/admin_styling.css">

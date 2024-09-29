@@ -190,7 +190,7 @@ $posts = array_slice($posts, 0, 4);
                     <br>
 
                     <!-- CAPTCHA -->
-                    <label for="captcha">Enter the text from the image:</label>
+                    <label for="captcha" id="captcha-label">Enter the text from the image:</label>
                     <img src="captcha.php?rand=<?php echo rand(); ?>" class="captcha-img" alt="CAPTCHA Image">
                     <br>
                     <input type="text" id="captcha" class="form-input" name="captcha" placeholder="CAPTCHA code" required>
