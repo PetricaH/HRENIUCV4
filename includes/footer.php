@@ -14,7 +14,7 @@
                         <li>Cookies</li>
                 </ul>
 
-                <form id="newsletterForm" action="subscribe.php" method="POST" novalidate>
+                <form id="newsletterForm" action="subscribe.php" method="POST">
                         <label for="email" class="newsletter-label-text">Subscribe to my newsletter</label>
                         <input type="email" id="email-input-newsletter" name="email" placeholder="Enter your email... "  required>
                         <button type="submit">Subscribe</button>
@@ -25,6 +25,5 @@
         <!-- // container -->
         <script src="./static/js/animations.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="./static/js/newsletter-validation.js"></script>
 </body>
 </html>
