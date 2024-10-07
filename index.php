@@ -130,44 +130,6 @@ $posts = array_slice($posts, 0, 4);
 
 
              <!-- RECENT ARTWORKS SECTION END -->
-
-
-             <!-- RECENT DIGITAL MARKETING PROJECTS SECTION START -->
-                <div class="different-section marketing-subsection">
-                    <div class="text-part-marketing-section">
-                        <div class="text-part-marketing-section-inside">
-                            <h2 class="content-title marketing-title">Digital Marketing</h2>
-                            <p>From Email Marketing, SEO, Paid Ads, to Marketing Campaigns, I do it all.</p>
-                            <button class="ask-for-rates-btn">Ask for Rates</button>
-                        </div>
-                    </div>
-                    <div class="post-part-marketing-section">
-                            <div class="different-section-content">
-                                <?php foreach ($posts as $post): ?>
-                                    <div class="post-card">
-                                                <img src="<?php echo BASE_URL . 'uploads/posts/' . $post['image']; ?>" class="post_image" alt="">
-
-                                        <div class="post_info">
-                                            <h3><?php echo $post['title'] ?></h3>
-                                            <span class="post-date"><?php echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
-                                            <?php if (isset($post['topic']['name'])): ?>
-                                                <a href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $post['topic']['id'] ?>" class="btn category">
-                                                    <?php echo $post['topic']['name'] ?>
-                                                </a>
-                                            <?php endif ?>
-
-                                            <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
-                                            <span class="read_more">
-                                                <span class="material-symbols-outlined expand_content_btn">expand_content</span>
-                                            </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
-                        </div>
-                    </div> 
-                </div>
-                        <!-- RECENT DIGITAL MARKETING PROJECTS SECTION END -->
     </section>
 
     <section id="contact-section">
