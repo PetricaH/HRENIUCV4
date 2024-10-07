@@ -273,8 +273,7 @@ ul li a {
     }
 
     .web-dev-subsection,
-    .art-subsection,
-    .marketing-subsection {
+    .art-subsection {
         background-color: red;
         width: 90%;
         display: grid;
@@ -430,8 +429,7 @@ ul li a {
 }
 
 .web-dev-subsection,
-.art-subsection,
-.marketing-subsection {
+.art-subsection {
     background-color: #001E1A;
     width: 90%;
     display: grid;
@@ -490,40 +488,22 @@ ul li a {
     cursor: pointer;
 }
 
-/* .web-dev-section,
-.art-section,
-.marketing-section {
-    width: 90%;
-    background-color: #001E1A;
-    display: grid;
-    grid-template-columns: .4fr .6fr; 
-    gap: 10px; 
-    justify-content: center;
-    align-content: center;
-    height: 500px;
-    border-radius: 8px;
-    margin-top: 100px;
-} */
-
 .text-part-web-dev-section,
-.text-part-art-section,
-.text-part-marketing-section {
+.text-part-art-section {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .text-part-web-dev-section-inside,
-.text-part-art-section-inside,
-.text-part-marketing-section-inside {
+.text-part-art-section-inside {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .post-part-web-dev-section,
-.post-part-art-section,
-.post-part-marketing-section {
+.post-part-art-section {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
