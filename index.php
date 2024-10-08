@@ -2,13 +2,11 @@
 <?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
 <?php require_once( ROOT_PATH . '/includes/public_functions.php') ?>
 <?php require_once( ROOT_PATH . '/includes/registration_login.php') ?>
-<?php $posts = getPublishedPosts(); ?>
 <?php $artworks = getPublishedArtworks(); ?>
 <?php $webdevprojects = getPublishedWebdevProjects(); ?>
 <?php
 // Display only the latest 4 posts
 $artworks = array_slice($artworks, 0, 4);
-$posts = array_slice($posts, 0, 4); 
 ?>
 <?php
     $success = false;
