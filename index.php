@@ -12,7 +12,7 @@ $artworks = array_slice($artworks, 0, 4);
     $success = false;
     if (isset($_POST['submit'])) {
         // Add form handling logic here, e.g., after form submission:
-        $success = true; 
+        $success = true;
     }
 ?>
     <title>Hreniuc Petrică</title>
@@ -128,6 +128,10 @@ $artworks = array_slice($artworks, 0, 4);
 
 
              <!-- RECENT ARTWORKS SECTION END -->
+
+            <!-- AUTOMATION WORKFLOW SETUPS START -->
+
+            <!-- AUTOMATION WORKFLOW SETUPS END -->
     </section>
 
     <section id="contact-section">
