@@ -130,7 +130,7 @@ $artworks = array_slice($artworks, 0, 4);
              <!-- RECENT ARTWORKS SECTION END -->
 
             <!-- AUTOMATION WORKFLOW SETUPS START -->
-
+                <h2>There are proceses that take time, I can give that time back to you...</h2>
             <!-- AUTOMATION WORKFLOW SETUPS END -->
     </section>
 
