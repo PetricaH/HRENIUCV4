@@ -131,6 +131,11 @@ $artworks = array_slice($artworks, 0, 4);
 
             <!-- AUTOMATION WORKFLOW SETUPS START -->
                 <h2>There are proceses that take time, I can give that time back to you...</h2>
+                <p>You want your clients to enter a complex email marketing campain but the whole process to be automated?</p>
+                <p>I can help you with that.</p>
+                <p>Or you could want to automate different workflows, such as sending a file after completing a form, or sending a notification to a specific email adress.</p>
+                <p>I can do that too.</p>
+                <p>And many other things!</p>
             <!-- AUTOMATION WORKFLOW SETUPS END -->
     </section>
 
