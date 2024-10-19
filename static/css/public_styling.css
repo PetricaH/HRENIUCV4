@@ -459,7 +459,7 @@ ul li a {
 .different-section h2 {
     font-size: 2rem;
     font-weight: bold;
-    color: #f2f2f2;
+    color: #b0e4dd;
 }
 
 .different-section p {
@@ -800,4 +800,91 @@ ul li a {
     color: #b0e4dd;
     padding-top: 25px;
     padding-bottom: 5px;
+}
+
+.automation-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#001E1A;
+    border-radius: 12px;
+    margin-top: 100px;
+    height: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 90%;
+}
+
+.automation-section h2 {
+    color: #b0e4dd;
+    padding-bottom: 50px;
+}
+
+.automation-section p {
+    color: #f2f2f2;
+}
+
+.automation-section-insides {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 10px 10px; 
+    grid-template-areas: 
+        "first second"
+        "first second"; 
+}
+
+.automation-section-insides-text {
+    align-self: center;
+    justify-self: center;
+    max-width: 470px;
+}
+
+.automation-screenshots {
+    align-self: center;
+    justify-self: center;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 10px 10px; 
+    grid-template-areas: 
+        "first second third"
+        "first second third"; 
+}
+
+.automation-screenshots .div {
+    width: 300px;
+    height: 450px;
+    background-position: center;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.automation-screenshots .div:nth-child(1){
+    background-image: url('../images/brevo-automation-v1.png');
+    grid-area: first;
+}
+
+.automation-screenshots .div:nth-child(2){
+    background-image: url('../images/brevo-automation-v2.png');
+    grid-area: second;
+}
+
+.automation-screenshots .div:nth-child(3){
+    grid-area: third;
+    background-image: url('../images/zapier-automation.png');
+}
+
+.automation-screenshots .div span {
+    position: absolute;
+    top: 10%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    background-color: #0056b3;
+    color: #b0e4dd;
+    padding: 10px 20px;
 }

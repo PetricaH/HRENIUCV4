@@ -130,12 +130,27 @@ $artworks = array_slice($artworks, 0, 4);
              <!-- RECENT ARTWORKS SECTION END -->
 
             <!-- AUTOMATION WORKFLOW SETUPS START -->
-                <h2>There are proceses that take time, I can give that time back to you...</h2>
-                <p>You want your clients to enter a complex email marketing campain but the whole process to be automated?</p>
-                <p>I can help you with that.</p>
-                <p>Or you could want to automate different workflows, such as sending a file after completing a form, or sending a notification to a specific email adress.</p>
-                <p>I can do that too.</p>
-                <p>And many other things!</p>
+            <div class="automation-section">
+                <div class="automation-section-insides">
+                    <div class="automation-section-insides-text">
+                        <h2>There are proceses that take time, I can give that time back to you...</h2>
+                        <p>You want your clients to enter a complex email marketing campain but the whole process to be automated?</p>
+                        <br>
+                        <p>I can help you with that.</p>
+                        <br>
+                        <p>Or you could want to automate different workflows, such as sending a file after completing a form, or sending a notification to a specific email adress.</p>
+                        <br>
+                        <p>I can do that too.</p>
+                        <br>
+                        <p>And many other things!</p>
+                    </div>
+                    <div class="automation-screenshots">
+                        <div class="div"><span>Brevo</span></div>
+                        <div class="div"><span>Brevo</span></div>
+                        <div class="div"><span>Zapier</span></div>
+                    </div>
+                </div>
+            </div>
             <!-- AUTOMATION WORKFLOW SETUPS END -->
     </section>
 
