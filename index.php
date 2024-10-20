@@ -143,6 +143,13 @@ $artworks = array_slice($artworks, 0, 4);
                         <p>I can do that too.</p>
                         <br>
                         <p>And many other things!</p>
+                        <div class="button-group-automation-section">
+                            <button class="ask-for-rates-btn">Ask for Rates</button>
+                            <div class="button-container">
+                                <button class="coming-soon-button">Learn To Automate</button>
+                                <span class="coming-soon-text">Coming Soon</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="automation-screenshots">
                         <div class="div"><span>Brevo</span></div>

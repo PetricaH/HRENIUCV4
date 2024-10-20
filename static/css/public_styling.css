@@ -818,6 +818,7 @@ ul li a {
 .automation-section h2 {
     color: #b0e4dd;
     padding-bottom: 50px;
+    font-size: 32px;
 }
 
 .automation-section p {
@@ -825,12 +826,12 @@ ul li a {
 }
 
 .automation-section-insides {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 5%;
+    padding-right: 5%;
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     grid-template-rows: 1fr; 
-    gap: 10px 10px; 
+    gap: 10px 50px; 
     grid-template-areas: 
         "first second"
         "first second"; 
@@ -839,7 +840,7 @@ ul li a {
 .automation-section-insides-text {
     align-self: center;
     justify-self: center;
-    max-width: 470px;
+    max-width: 600px;
 }
 
 .automation-screenshots {
@@ -888,3 +889,41 @@ ul li a {
     color: #b0e4dd;
     padding: 10px 20px;
 }
+
+.button-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .coming-soon-text {
+    position: absolute;
+    bottom: 110%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #b0e4dd;
+    color: #001E1A;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    visibility: hidden; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .coming-soon-button {
+    width: fit-content;
+    padding: 10px 30px;
+    border-radius: 8px;
+    border: 1px solid #b0e4dd;
+    transition: background-color 0.3s, transform 0.3s;  
+    background-color: transparent;
+    color: #b0e4dd;
+    margin-left: 10px;
+  }
+  
+  .coming-soon-button:hover + .coming-soon-text {
+    visibility: visible;
+    opacity: 1; /* Show text when hovering */
+  }
+  
