@@ -86,7 +86,38 @@ $artworks = array_slice($artworks, 0, 4);
                 </div>
             </div>
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION END -->
-
+             
+            <!-- AUTOMATION WORKFLOW SETUPS START -->
+            <div class="automation-section">
+                <div class="automation-section-insides">
+                    <div class="automation-section-insides-text">
+                        <h2>There are proceses that take time, I can give that time back to you...</h2>
+                        <p>You want your clients to enter a complex email marketing campain but the whole process to be automated?</p>
+                        <br>
+                        <p>I can help you with that.</p>
+                        <br>
+                        <p>Or you could want to automate different workflows, such as sending a file after completing a form, or sending a notification to a specific email adress.</p>
+                        <br>
+                        <p>I can do that too.</p>
+                        <br>
+                        <p>And many other things!</p>
+                        <div class="button-group-automation-section">
+                            <button class="ask-for-rates-btn">Ask for Rates</button>
+                            <div class="button-container">
+                                <button class="coming-soon-button">Learn To Automate</button>
+                                <span class="coming-soon-text">Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="automation-screenshots">
+                        <div class="div"><span>Brevo</span></div>
+                        <div class="div"><span>Brevo</span></div>
+                        <div class="div"><span>Zapier</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- AUTOMATION WORKFLOW SETUPS END -->
+            
             <!-- RECENT ARTWORKS SECTION START -->
             <div class="different-section art-subsection">
 
@@ -129,36 +160,6 @@ $artworks = array_slice($artworks, 0, 4);
 
              <!-- RECENT ARTWORKS SECTION END -->
 
-            <!-- AUTOMATION WORKFLOW SETUPS START -->
-            <div class="automation-section">
-                <div class="automation-section-insides">
-                    <div class="automation-section-insides-text">
-                        <h2>There are proceses that take time, I can give that time back to you...</h2>
-                        <p>You want your clients to enter a complex email marketing campain but the whole process to be automated?</p>
-                        <br>
-                        <p>I can help you with that.</p>
-                        <br>
-                        <p>Or you could want to automate different workflows, such as sending a file after completing a form, or sending a notification to a specific email adress.</p>
-                        <br>
-                        <p>I can do that too.</p>
-                        <br>
-                        <p>And many other things!</p>
-                        <div class="button-group-automation-section">
-                            <button class="ask-for-rates-btn">Ask for Rates</button>
-                            <div class="button-container">
-                                <button class="coming-soon-button">Learn To Automate</button>
-                                <span class="coming-soon-text">Coming Soon</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="automation-screenshots">
-                        <div class="div"><span>Brevo</span></div>
-                        <div class="div"><span>Brevo</span></div>
-                        <div class="div"><span>Zapier</span></div>
-                    </div>
-                </div>
-            </div>
-            <!-- AUTOMATION WORKFLOW SETUPS END -->
     </section>
 
     <section id="contact-section">

@@ -740,6 +740,7 @@ ul li a {
     padding-top: 50px;
     padding-bottom: 50px;
     border-radius: 12px;
+    margin-bottom: 100px;
 }
 
 .footer-group ul,
@@ -841,6 +842,7 @@ ul li a {
     align-self: center;
     justify-self: center;
     max-width: 600px;
+    font-weight: 200;
 }
 
 .automation-screenshots {
@@ -909,6 +911,7 @@ ul li a {
     visibility: hidden; /* Hidden by default */
     opacity: 0;
     transition: opacity 0.3s ease;
+    font-weight: 400;
   }
   
   .coming-soon-button {
@@ -926,4 +929,3 @@ ul li a {
     visibility: visible;
     opacity: 1; /* Show text when hovering */
   }
-  
