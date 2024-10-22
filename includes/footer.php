@@ -3,7 +3,7 @@
 
                 <ul>
                         <li>LEGAL</li>
-                        <li>Home</li>
+                        <a href="index.php"><li>Home</li></a>
                         <li>Contact</li>
                         <li>Web Development</li>
                         <li>Digital Art</li>
