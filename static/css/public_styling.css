@@ -928,4 +928,4 @@ ul li a {
   .coming-soon-button:hover + .coming-soon-text {
     visibility: visible;
     opacity: 1; /* Show text when hovering */
-  }
+}
