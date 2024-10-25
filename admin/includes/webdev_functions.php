@@ -12,28 +12,62 @@ $project_category_id = "";
 $published = false;
 $project_image = "";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Fetch all available technologies
+function getAllTechnologies() {
     global $conn;
-    
-    // file upload handling 
-    $target_dir = "uploads/projects";
-    $target_file = $target_dir . basename($_FILES["project_image"]["name"]);
-    move_uploaded_file($_FILES["project_image"]["tmp_name"], $target_file);
+    $query = "SELECT * FROM technologies";
+    $result = mysqli_query($conn, $query);
 
-    // insert project data into database
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $technologies = $_POST['technologies'];
-    $image = $target_file;
-    
-    $stmt = $conn->prepare("INSERT INTO projects (title, description, image, technologies) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $title, $description, $image, $technologies);
-    $stmt->execute();
-    
-    echo "New webdev project added successfully!";
-    $stmt->close();
-    $conn->close();
+    if (!$result) {
+        die("Database query failed: " . mysqli_error($conn));
+    }
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+// Add a new web development project with selected technologies
+function addProject($title, $description, $imagePath, $technologyIds) {
+    global $conn;
+
+    // Insert the project details into the webdev_projects table
+    $query = "INSERT INTO webdev_projects (title, description, project_image, created_at) VALUES (?, ?, ?, NOW())";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sss", $title, $description, $imagePath);
+
+    if (mysqli_stmt_execute($stmt)) {
+        $projectId = mysqli_insert_id($conn);
+        
+        // Link the selected technologies with the project in the project_technologies table
+        foreach ($technologyIds as $techId) {
+            $techQuery = "INSERT INTO project_technologies (project_id, technology_id) VALUES (?, ?)";
+            $techStmt = mysqli_prepare($conn, $techQuery);
+            mysqli_stmt_bind_param($techStmt, "ii", $projectId, $techId);
+            mysqli_stmt_execute($techStmt);
+        }
+
+        mysqli_stmt_close($stmt);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Fetch the latest published projects with associated technologies
+function getPublishedWebdevProjects() {
+    global $conn;
+    $query = "SELECT wp.*, GROUP_CONCAT(t.name SEPARATOR ', ') AS tech_used
+              FROM webdev_projects wp
+              LEFT JOIN project_technologies pt ON wp.id = pt.project_id
+              LEFT JOIN technologies t ON pt.technology_id = t.id
+              GROUP BY wp.id
+              ORDER BY wp.created_at DESC LIMIT 3";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Database query failed: " . mysqli_error($conn));
+    }
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
 ?>
 

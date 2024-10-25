@@ -51,7 +51,6 @@ $artworks = array_slice($artworks, 0, 4);
 
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION START -->
             <div class="different-section web-dev-subsection">
-
                 <div class="text-part-web-dev-section">
                     <div class="text-part-web-dev-section-inside">
                         <h2 class="content-title web-dev-title">Web Development</h2>
@@ -59,33 +58,37 @@ $artworks = array_slice($artworks, 0, 4);
                         <button class="ask-for-rates-btn">Ask for Rates</button>
                     </div>
                 </div>
-            
+
                 <div class="post-part-web-dev-section">
                     <div class="different-section-content">
                         <?php foreach ($webdevprojects as $webdevproject): ?>
-                            <div class="post" style="margin-left: 0px;">
-                                <img src="<?php echo BASE_URL . '/uploads/projects/' . $webdevproject['project_image']; ?>" class="post_image" alt="">
+                            <div class="project-card">
+                                <!-- Display project image -->
+                                <img src="<?php echo BASE_URL . '/uploads/projects/' . $webdevproject['project_image']; ?>" class="project-image" alt="<?php echo $webdevproject['title']; ?>">
 
-                                <?php if (isset($webdevproject['category']['name'])): ?>
-                                <a href="<?php echo BASE_URL . 'filtered_projects.php?category=' . $webdevproject['category']['id']; ?>" class="btn category">
-                                    <?php echo $webdevproject['category']['name']; ?>
-                                </a>
-                                <?php endif ?>
-                                    <div class="post_info">
-                                        <h3><?php echo $webdevproject['title']; ?></h3>
-                                        <span class="post-date"><?php echo date("F j, Y", strtotime($webdevproject["created_at"])); ?></span>
-                                        <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>">
-                                            <span class="read_more">
-                                                <span class="material-symbols-outlined expand_content_btn">expand_content</span>
-                                            </span>
+                                <div class="project-info">
+                                    <!-- Display project title -->
+                                    <h3><?php echo $webdevproject['title']; ?></h3>
+                                    
+                                    <!-- Display the technology logos -->
+                                    <div class="tech-logos">
+                                        <?php foreach (explode(',', $webdevproject['tech_used']) as $tech_logo): ?>
+                                            <img src="<?php echo BASE_URL . '/uploads/tech_logos/' . trim($tech_logo); ?>" alt="Tech Logo" class="tech-logo">
+                                        <?php endforeach; ?>
                                     </div>
-                                </a>
+                                    
+                                    <!-- Button to view the full project page -->
+                                    <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>" class="view-project-btn">
+                                        <button>View Project</button>
+                                    </a>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
                 </div>
             </div>
             <!-- RECENT WEB DEVELOPMENT PROJECTS SECTION END -->
+
              
             <!-- AUTOMATION WORKFLOW SETUPS START -->
             <div class="automation-section">

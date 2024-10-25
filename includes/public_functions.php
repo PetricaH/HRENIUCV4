@@ -79,23 +79,16 @@ function getAllArtCategories() {
 // function to get all published webdev projects
 function getPublishedWebdevProjects() {
     global $conn;
-    $sql = "SELECT a.*, ac.name AS category_name, ac.id AS category_id
-        FROM webdev a
-        JOIN webdev_project_categories ac ON a.project_category_id = ac.id
-        WHERE a.published=true";
-    $result = mysqli_query($conn, $sql);
-    $webdevprojects = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-    foreach ($webdevprojects as &$webdevproject) {
-        // attach category information
-        $webdevproject['category'] = [
-            'id' => $webdevproject['category_id'],
-            'name' => $webdevproject['category_name']
-        ];
+    $query = "SELECT * FROM projects ORDER BY created_at DESC LIMIT 3";
+    $result = mysqli_query($conn, $query);
+    
+    if (!$result) {
+        die("Database query failed: " . mysqli_error($conn));
     }
 
-    return $webdevprojects;
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
+
 
 //function to get a single web dev project by its slug
 function getWebdevProject($slug) {

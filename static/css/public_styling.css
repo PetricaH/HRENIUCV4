@@ -189,37 +189,6 @@ ul li a {
     .hero-section-copy-container-groups {
         transform: translate(-50%, 50%) !important;
     }
-
-    .different-section-content {
-        display: flex;
-        flex-direction: row;
-    }
-    
-    /* Child container for the cards */
-    .different-section-content {
-        display: grid; 
-        grid-template-columns: 1fr 1fr; 
-        grid-template-rows: 1fr 1fr; 
-        gap: 10px 10px; 
-        grid-template-areas: 
-            ". ."
-            ". ."; 
-    }
-    
-    .post-card {
-        background-color: #ddd;
-        border-radius: 10px;
-        width: 40vw; 
-        height: 400px;
-        overflow: hidden;
-        position: relative; 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    }
-
-    .post-card:nth-child(2), 
-    .post-card:nth-child(4) {
-        margin-top: 0; 
-    }
 }
 
 @media (min-width: 769px) {
@@ -246,33 +215,6 @@ ul li a {
         border-radius: 8px 0 0 8px !important;
     }
 
-     /* Child container for the cards */
-    .different-section-content {
-        display: grid; 
-        grid-template-columns: 1fr 1fr 1fr 1fr; 
-        grid-template-rows: 1fr; 
-        gap: 10px 10px; 
-        grid-template-areas: 
-            ". ."
-            ". ."; 
-    }
-
-    .post-card {
-        background-color: #ddd;
-        border-radius: 10px;
-        width: 13vw; 
-        height: 400px;
-        overflow: hidden;
-        position: relative; 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    }
-
-    .post-card:nth-child(2), 
-    .post-card:nth-child(4) {
-        margin-top: 50px; 
-    }
-
-    .web-dev-subsection,
     .art-subsection {
         background-color: red;
         width: 90%;
@@ -928,4 +870,52 @@ ul li a {
   .coming-soon-button:hover + .coming-soon-text {
     visibility: visible;
     opacity: 1; /* Show text when hovering */
+}
+
+.project-card {
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px;
+    width: 300px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.project-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.tech-logos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tech-logo {
+    width: 30px;
+    height: auto;
+}
+
+.view-project-btn button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-project-btn button:hover {
+    background-color: #0056b3;
 }
