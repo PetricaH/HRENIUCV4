@@ -60,6 +60,35 @@
 
             <button type="submit" name="add_technology">Add Technology</button>
         </form>
+
+        <h2>Added Technologies</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology Name</th>
+                    <th>Logo Path</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $techs = getAllTechnologies(); // Fetch all technologies
+                foreach ($techs as $tech): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($tech['name']); ?></td>
+                        <td><?php echo htmlspecialchars($tech['logo']); ?></td>
+                        <td>
+                            <form action="delete_technology.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="tech_id" value="<?php echo $tech['id']; ?>">
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this technology?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        
         <!-- Toast Notification Container -->
         <div id="toast-container" class="toast-container"></div>
     </div>
@@ -95,7 +124,7 @@
                 }
             }, 6000);
         }
-        
+
     // define closeToast function as a global function on the window
     window.closeToast = (button) => {
         const toast = button.parrentElement;

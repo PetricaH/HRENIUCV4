@@ -6,15 +6,6 @@
 <title>Admin | Manage Web Development Projects</title>
 </head>
 <body>
-
-<?php 
-// Check if the delete request has been made
-if (isset($_GET['delete-project'])) {
-    $project_id = $_GET['delete-project'];
-    deleteWebdevPost($project_id); // Call the delete function
-}
-?>
-
 <!-- Admin navbar -->
 <?php include(ROOT_PATH . '/admin/includes/navbar.php'); ?>
 <div class="container content">
@@ -25,7 +16,7 @@ if (isset($_GET['delete-project'])) {
     <div class="table-div" style="width: 80%;">
         <!-- Display notification message -->
         <?php include(ROOT_PATH . '/includes/messages.php'); ?>
-        <?php $webdevprojects = getPublishedWebdevProjects(); ?> <!-- Ensure the function works -->
+        <?php $webdevprojects = getPublishedWebdevProjects(); ?>
 
         <?php if (empty($webdevprojects)): ?>
             <h1>No web development projects found</h1>

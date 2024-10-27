@@ -424,10 +424,18 @@ function deleteArtCategory($category_id) {
     }
 }
 
-// FUNCTIONS FROM HERE DOWNWARDS FOR WEB DEV
+// functions for webev technologies
+function getAllTechnologies() {
+    global $conn;
+    $query = "SELECT * FROM technologies";
+    $result = mysqli_query($conn, $query);
 
-//WEB DEVELOPMENT CATEGORIES FUNCTIONS FROM HERE DOWNWARDS
+    if (!$result) {
+        die("Database query failed: " . mysqli_error($conn));
+    }
 
-// END OF FUNCTIONS FOR WEB DEV
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
 
 ?>
