@@ -55,19 +55,32 @@ function addProject($title, $description, $imagePath, $technologyIds) {
 // Fetch the latest published projects with associated technologies
 function getPublishedWebdevProjects() {
     global $conn;
-    $query = "SELECT wp.*, GROUP_CONCAT(t.name SEPARATOR ', ') AS tech_used
-              FROM webdev_projects wp
-              LEFT JOIN project_technologies pt ON wp.id = pt.project_id
-              LEFT JOIN technologies t ON pt.technology_id = t.id
-              GROUP BY wp.id
-              ORDER BY wp.created_at DESC LIMIT 3";
+    $query = "
+        SELECT wp.*, t.name AS tech_name, t.logo AS tech_logo 
+        FROM webdev_projects wp
+        LEFT JOIN project_technologies pt ON wp.id = pt.project_id
+        LEFT JOIN technologies t ON pt.tech_id = t.id
+        ORDER BY wp.created_at DESC LIMIT 3";
     $result = mysqli_query($conn, $query);
-
+    
     if (!$result) {
         die("Database query failed: " . mysqli_error($conn));
     }
 
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $projects = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $project_id = $row['id'];
+        if (!isset($projects[$project_id])) {
+            $projects[$project_id] = $row;
+            $projects[$project_id]['technologies'] = [];
+        }
+        $projects[$project_id]['technologies'][] = [
+            'name' => $row['tech_name'],
+            'logo' => $row['tech_logo']
+        ];
+    }
+    return $projects;
 }
+
 ?>
 

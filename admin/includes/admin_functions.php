@@ -108,28 +108,47 @@ if (isset($_GET['delete-art-category'])) {
 
 //WEB DEV ACTIONS FROM HERE DOWNWARDS
 
+// WEB DEV ACTIONS FROM HERE DOWNWARDS
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     global $conn;
     
-    // file upload handling 
-    $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/HRENIUCV4/uploads/projects/"; 
-    $target_file = $target_dir . basename($_FILES["project_image"]["name"]);
-    move_uploaded_file($_FILES["project_image"]["tmp_name"], $target_file);
+    // Check if file was uploaded without errors
+    if (isset($_FILES["project_image"]) && $_FILES["project_image"]["error"] === 0) {
+        // Define upload directory and relative path
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'] . "/HRENIUCV4/uploads/projects/";
+        $file_name = basename($_FILES["project_image"]["name"]);
+        $target_file = $upload_dir . $file_name;
 
-    // insert project data into database
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $technologies = $_POST['technologies'];
-    $image = $target_file;
+        // Attempt to move the uploaded file
+        if (move_uploaded_file($_FILES["project_image"]["tmp_name"], $target_file)) {
+            // Relative path for database entry
+            $image_path = "/HRENIUCV4/uploads/projects/" . $file_name;
+        } else {
+            echo "File upload failed.";
+            exit;
+        }
+    } else {
+        echo "No file uploaded or upload error.";
+        exit;
+    }
+
+    // Sanitize and assign form input
+    $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars($_POST['description']);
+    $technologies = htmlspecialchars($_POST['technologies']);
     
+    // Prepare and execute the SQL statement
     $stmt = $conn->prepare("INSERT INTO projects (title, description, image, technologies) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $title, $description, $image, $technologies);
-    $stmt->execute();
-    
-    echo "New webdev project added successfully!";
-    $stmt->close();
-    $conn->close();
+    $stmt->bind_param("ssss", $title, $description, $image_path, $technologies);
+
+    if ($stmt->execute()) {
+        echo "New webdev project added successfully!";
+    } else {
+        echo "Error adding project: " . $stmt->error;
+    }
 }
+
 
 //ADMIN USERS FUNCTIONS FROM HERE DOWNWARDS
 
