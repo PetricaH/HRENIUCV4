@@ -437,5 +437,22 @@ function getAllTechnologies() {
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+function deleteTechnology($techId) {
+    global $conn;
+    $query = "DELETE FROM technologies WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $techId);
+
+    if (mysqli_stmt_execute($stmt)) {
+        $_SESSION['message'] = "Technology deleted successfully!";
+        $_SESSION['msg_type'] = "success";
+    } else {
+        $_SESSION['message'] = "Error deletig technology.";
+        $_SESSION['msg_type'] = "error";
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 
 ?>

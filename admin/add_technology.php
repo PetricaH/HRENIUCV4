@@ -80,7 +80,7 @@
                         <td>
                             <form action="delete_technology.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="tech_id" value="<?php echo $tech['id']; ?>">
-                                <button type="submit" onclick="return confirm('Are you sure you want to delete this technology?');">Delete</button>
+                                <button type="submit">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -88,7 +88,6 @@
             </tbody>
         </table>
 
-        
         <!-- Toast Notification Container -->
         <div id="toast-container" class="toast-container"></div>
     </div>

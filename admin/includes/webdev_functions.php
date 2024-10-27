@@ -12,19 +12,6 @@ $project_category_id = "";
 $published = false;
 $project_image = "";
 
-// Fetch all available technologies
-function getAllTechnologies() {
-    global $conn;
-    $query = "SELECT * FROM technologies";
-    $result = mysqli_query($conn, $query);
-
-    if (!$result) {
-        die("Database query failed: " . mysqli_error($conn));
-    }
-
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-
 // Add a new web development project with selected technologies
 function addProject($title, $description, $imagePath, $technologyIds) {
     global $conn;
