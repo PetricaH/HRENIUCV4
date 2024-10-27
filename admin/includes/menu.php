@@ -14,6 +14,7 @@
                         <a href="<?php echo BASE_URL . 'admin/posts.php' ?>">Manage Digital Marketing Projects</a>
                         <a href="<?php echo BASE_URL . 'admin/topics.php' ?>">Manage Digital Marketing Topics</a>
                         <a href="<?php echo BASE_URL . 'admin/users.php' ?>">Manage Users</a>
+                        <a href="<?php echo BASE_URL . 'admin/add_technology.php' ?>">Add Technologies</a>
                 </div>
         </div>
 </div>
