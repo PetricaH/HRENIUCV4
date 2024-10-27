@@ -2,7 +2,35 @@
 <?php include(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
 <?php include(ROOT_PATH . '/admin/includes/webdev_functions.php'); ?>
 <?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
+<?php 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    global $conn;
 
+    // Sanitize input for title and description
+    $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars($_POST['description']);
+    
+    // Get the selected technology IDs (no need to use htmlspecialchars here)
+    $technologyIds = $_POST['technologies'] ?? []; // This will be an array
+
+    // File upload handling 
+    $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/uploads/projects/";
+    $target_file = $target_dir . basename($_FILES["project_image"]["name"]);
+    
+    if (move_uploaded_file($_FILES["project_image"]["tmp_name"], $target_file)) {
+        // Insert project data into database
+        $image = basename($_FILES["project_image"]["name"]); // Store just the image name
+        
+        if (addProject($title, $description, $image, $technologyIds)) {
+            echo "New webdev project added successfully!";
+        } else {
+            echo "Error adding project.";
+        }
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+?>
 <title>Admin | Create WebDev Post</title>
 </head>
 <body>

@@ -63,22 +63,15 @@ $artworks = array_slice($artworks, 0, 4);
                     <div class="different-section-content">
                         <?php foreach ($webdevprojects as $webdevproject): ?>
                             <div class="project-card">
-                                <!-- Display project image -->
-                                <img src="<?php echo BASE_URL . '/uploads/projects/' . $webdevproject['project_image']; ?>" class="project-image" alt="<?php echo htmlspecialchars($webdevproject['title']); ?>">
-
+                                <img src="<?php echo BASE_URL . '/uploads/projects/' . $webdevproject['project_image']; ?>" class="project-image" alt="<?php echo $webdevproject['title']; ?>">
                                 <div class="project-info">
-                                    <!-- Display project title -->
-                                    <h3><?php echo htmlspecialchars($webdevproject['title']); ?></h3>
-                                    
-                                    <!-- Display the technology logos -->
+                                    <h3><?php echo $webdevproject['title']; ?></h3>
                                     <div class="tech-logos">
-                                        <?php foreach ($webdevproject['technologies'] as $tech): ?>
-                                            <img src="<?php echo BASE_URL . '/' . htmlspecialchars($tech['logo']); ?>" alt="<?php echo htmlspecialchars($tech['name']); ?> logo" class="tech-logo">
+                                        <?php foreach (explode(',', $webdevproject['technologies']) as $tech_logo): ?>
+                                            <img src="<?php echo BASE_URL . '/uploads/tech_logos/' . trim($tech_logo); ?>" alt="Tech Logo" class="tech-logo">
                                         <?php endforeach; ?>
                                     </div>
-                                    
-                                    <!-- Button to view the full project page -->
-                                    <a href="single_project.php?project-id=<?php echo htmlspecialchars($webdevproject['id']); ?>" class="view-project-btn">
+                                    <a href="single_project.php?project-id=<?php echo $webdevproject['id']; ?>" class="view-project-btn">
                                         <button>View Project</button>
                                     </a>
                                 </div>
