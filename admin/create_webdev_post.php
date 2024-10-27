@@ -52,13 +52,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <textarea name="description" id="description" rows="4" required></textarea>
 
             <label for="technologies">Select Technologies Used:</label>
-            <select name="technologies[]" id="technologies" multiple required>
-                <?php foreach ($techs as $tech): ?>
-                    <option value="<?php echo $tech['id']; ?>">
-                        <?php echo $tech['name']; ?>
-                    </option>
+            <div id="technologies" style="display: flex; flex-wrap: wrap;">
+                <?php 
+                $techs = getAllTechnologies(); // Fetch technologies from database
+                foreach ($techs as $tech): ?>
+                    <div style="margin: 5px;">
+                        <input type="checkbox" name="technologies[]" id="tech-<?php echo $tech['id']; ?>" value="<?php echo $tech['id']; ?>">
+                        <label for="tech-<?php echo $tech['id']; ?>"><?php echo $tech['name']; ?></label>
+                    </div>
                 <?php endforeach; ?>
-            </select>
+            </div>
+
 
             <label for="project_image">Upload Project Image:</label>
             <input type="file" name="project_image" id="project_image" required>
