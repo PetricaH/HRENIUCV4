@@ -60,6 +60,16 @@
 
             <button type="submit" name="add_technology">Add Technology</button>
         </form>
+        
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="toast-container">
+                <div class="toast <?php echo $_SESSION['msg_type']; ?>">
+                    <?php echo $_SESSION['message']; ?>
+                    <button class="close-btn" onclick="this.parentElement.style.display='none'">X</button>
+                </div>
+            </div>
+            <?php unset($_SESSION['message']); unset($_SESSION['msg_type']); ?>
+        <?php endif; ?>
 
         <h2>Added Technologies</h2>
         <table>
@@ -126,7 +136,7 @@
 
     // define closeToast function as a global function on the window
     window.closeToast = (button) => {
-        const toast = button.parrentElement;
+        const toast = button.parentElement;
         toast.classList.remove('show');
         setTimeout(() => {
             toast.remove();
