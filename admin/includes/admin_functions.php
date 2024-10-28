@@ -112,17 +112,15 @@ if (isset($_GET['delete-art-category'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     global $conn;
-    
+
     // Check if file was uploaded without errors
     if (isset($_FILES["project_image"]) && $_FILES["project_image"]["error"] === 0) {
-        // Define upload directory and relative path
         $upload_dir = $_SERVER['DOCUMENT_ROOT'] . "/HRENIUCV4/uploads/projects/";
         $file_name = basename($_FILES["project_image"]["name"]);
         $target_file = $upload_dir . $file_name;
 
-        // Attempt to move the uploaded file
+        // Move the uploaded file
         if (move_uploaded_file($_FILES["project_image"]["tmp_name"], $target_file)) {
-            // Relative path for database entry
             $image_path = "/HRENIUCV4/uploads/projects/" . $file_name;
         } else {
             echo "File upload failed.";
@@ -136,18 +134,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitize and assign form input
     $title = htmlspecialchars($_POST['title']);
     $description = htmlspecialchars($_POST['description']);
-    $technologies = htmlspecialchars($_POST['technologies']);
-    
-    // Prepare and execute the SQL statement
-    $stmt = $conn->prepare("INSERT INTO projects (title, description, image, technologies) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $title, $description, $image_path, $technologies);
+    $technologies = isset($_POST['technologies']) ? $_POST['technologies'] : [];
+
+    // Insert project into `projects` table
+    $stmt = $conn->prepare("INSERT INTO projects (title, description, image, created_at) VALUES (?, ?, ?, NOW())");
+    $stmt->bind_param("sss", $title, $description, $image_path);
 
     if ($stmt->execute()) {
+        // Get the inserted project ID
+        $project_id = $stmt->insert_id;
+
+        // Insert each selected technology into `project_technologies`
+        $techStmt = $conn->prepare("INSERT INTO project_technologies (project_id, technology_id) VALUES (?, ?)");
+        foreach ($technologies as $tech_id) {
+            $techStmt->bind_param("ii", $project_id, $tech_id);
+            $techStmt->execute();
+        }
+        $techStmt->close();
+
         echo "New webdev project added successfully!";
     } else {
         echo "Error adding project: " . $stmt->error;
     }
+    $stmt->close();
 }
+
 
 
 //ADMIN USERS FUNCTIONS FROM HERE DOWNWARDS
