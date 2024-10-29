@@ -145,3 +145,14 @@ form {
     }
     .error {color: #a94442; background: #f2dede; border: 1px solid #a94442; margin-bottom: 20px; }
     .validation_errors p {text-align: left;margin-left: 10px;}
+
+    .add_project_btn {
+        background-color: #0E7D92;
+        color: #E1E1E1;
+        border: none;
+        padding: 10px 20px;
+        font-weight: 600;
+        border-radius: 5px;
+        }
+
+        

@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="project_image">Upload Project Image:</label>
             <input type="file" name="project_image" id="project_image" required>
 
-            <button type="submit">Add Project</button>
+            <button type="submit" class="add_project_btn">Add Project</button>
         </form>
     </div>
 </body>
