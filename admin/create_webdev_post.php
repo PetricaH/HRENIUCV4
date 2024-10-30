@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php 
                 $techs = getAllTechnologies(); // Fetch technologies from database
                 foreach ($techs as $tech): ?>
-                    <div style="margin: 5px;">
+                    <div style="margin: 5px; background-color: #b0e4dd; border-radius: 5px; padding: 5px 10px;">
                         <input type="checkbox" name="technologies[]" id="tech-<?php echo $tech['id']; ?>" value="<?php echo $tech['id']; ?>">
                         <label for="tech-<?php echo $tech['id']; ?>"><?php echo $tech['name']; ?></label>
                     </div>

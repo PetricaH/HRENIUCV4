@@ -135,7 +135,7 @@ form {
     * * * * * * * * * */
     .message {
             width: 100%; 
-            margin: 0px auto; 
+            margin: 0px auto;
             padding: 10px 0px; 
             color: #3c763d; 
             background: #dff0d8; 
@@ -147,7 +147,7 @@ form {
     .validation_errors p {text-align: left;margin-left: 10px;}
 
     .add_project_btn {
-        background-color: #0E7D92;
+        background-color: rgba(14, 125, 146, .8);
         color: #E1E1E1;
         border: none;
         padding: 10px 20px;
@@ -155,4 +155,8 @@ form {
         border-radius: 5px;
         }
 
-        
+        .add_project_btn:hover {
+                cursor: pointer;
+                background-color: rgba(14, 125, 146, 1);
+        }
+
