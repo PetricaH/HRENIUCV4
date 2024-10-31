@@ -157,6 +157,6 @@ form {
 
         .add_project_btn:hover {
                 cursor: pointer;
-                background-color: rgba(14, 125, 146, 1);
+                background-color: rgba(14, 125, 146, .5);
         }
 
